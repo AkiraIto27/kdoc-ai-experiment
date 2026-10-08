@@ -1,0 +1,70 @@
+{
+  "scope": "Final allowlist integrity and content scan; independent functional results are separately reported",
+  "originalRepositoryUnchanged": true,
+  "conditionCopies": {
+    "A": {
+      "files": 67,
+      "matchesMeasuredSourceHashes": true,
+      "excludedToolsAbsent": true
+    },
+    "E": {
+      "files": 67,
+      "matchesMeasuredSourceHashes": true,
+      "excludedToolsAbsent": true
+    }
+  },
+  "publicTextFilesScanned": 2875,
+  "reviewFindings": [],
+  "forbiddenPathFindings": [],
+  "symlinks": [],
+  "binaryFiles": [
+    "conditions/E/gradle/wrapper/gradle-wrapper.jar",
+    "conditions/E/app/src/main/res/mipmap-mdpi/ic_launcher.webp",
+    "conditions/E/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp",
+    "conditions/E/app/src/main/res/mipmap-hdpi/ic_launcher.webp",
+    "conditions/E/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp",
+    "conditions/E/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
+    "conditions/E/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp",
+    "conditions/E/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp",
+    "conditions/E/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp",
+    "conditions/E/app/src/main/res/mipmap-xhdpi/ic_launcher.webp",
+    "conditions/E/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp",
+    "conditions/A/gradle/wrapper/gradle-wrapper.jar",
+    "conditions/A/app/src/main/res/mipmap-mdpi/ic_launcher.webp",
+    "conditions/A/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp",
+    "conditions/A/app/src/main/res/mipmap-hdpi/ic_launcher.webp",
+    "conditions/A/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp",
+    "conditions/A/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
+    "conditions/A/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp",
+    "conditions/A/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp",
+    "conditions/A/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp",
+    "conditions/A/app/src/main/res/mipmap-xhdpi/ic_launcher.webp",
+    "conditions/A/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp"
+  ],
+  "privateGraderRawLogsConversationsCopied": false,
+  "llmTrialsExecuted": 0,
+  "independentAcceptanceCompleted": false,
+  "httpAdapterImplemented": true,
+  "httpsPublished": false,
+  "livePublicationGetExecuted": false,
+  "httpVariantLlmMeasured": false,
+  "independentPartialAcceptance": {
+    "source": "reported by separate independent reviewer",
+    "httpPassed": 8,
+    "httpTotal": 8,
+    "staticPagesValidated": 2640,
+    "finalPublicationBoundary": "pending"
+  },
+  "runtimeTestsExecutedByPublicationPreparer": false,
+  "publicationAllowlistFiles": 2897,
+  "gitignoreCheck": {
+    "dummyExcludedCases": 20,
+    "dummyVisibleCases": 7,
+    "actualBuildFilesIgnored": 77,
+    "allowlistedFilesIgnored": 0,
+    "passed": true,
+    "usedSeparatePrivateScratchRepository": true
+  },
+  "buildFilesPreserved": 77,
+  "buildFilesAllowlisted": 0
+}

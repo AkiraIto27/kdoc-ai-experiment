@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KDoc AI experiment — catalog fixture</title>
+<style>body{max-width:48rem;margin:3rem auto;padding:0 1rem;font:1rem/1.8 system-ui,sans-serif;color:#162333}a{color:#235da8}code{font-size:.9em}</style>
+<main>
+<h1>KDoc比較用の商品データ</h1>
+<p>全500商品は架空の固定fixtureです。A/E実測版はKtor MockEngineを使用しました。このPages配信を使うHTTP版は実装済み・未計測です。</p>
+<p>現在は公開準備段階です。HTTPS公開、公開URLへのlive GET、HTTP版のLLM実測は未実施です。</p>
+<ul>
+<li><a href="data/catalog-v1/manifest.json">データ版・hash・limit索引のmanifest</a></li>
+<li><a href="data/catalog-v1/limits/50/first.json">既定50件の先頭ページ</a></li>
+<li><a href="data/catalog-v1/limits/1/first.json">limit=1の先頭ページ</a></li>
+<li><a href="data/catalog-v1/limits/100/first.json">limit=100の先頭ページ</a></li>
+<li><a href="data/catalog-v1/empty.json">空一覧</a></li>
+<li><a href="data/catalog-v1/products.json">全500件の元fixture</a>（ページDTOとして直接渡さないでください）</li>
+</ul>
+<p>次ページは同じlimitの<code>limits/&lt;limit&gt;/&lt;nextCursor&gt;.json</code>を取得します。クエリによるサーバー側ページ化や固定503応答は提供していません。</p>
+<p><a href="https://github.com/AkiraIto27/kdoc-ai-experiment">A/Eソースと配信仕様の公開先候補</a></p>
+</main>
+</html>

@@ -1,0 +1,32 @@
+{
+  "generator": "scripts/build_pages_data.py",
+  "snapshotId": "catalog-v1",
+  "sourceFixtureSha256": "5102e643ca1beaedaf98535f893fd5c0d874e013d0acfc51ab98e3f5740c378d",
+  "sourceFixtureBytes": 1276881,
+  "normalPages": 2640,
+  "generatedFiles": 2743,
+  "generatedBytes": 131066904,
+  "pagesDirectoryBytes": 131068495,
+  "manifestSha256": "19a9eb360df2248b119702af2353121d37e2bb1a277df4efd0ac623ec6e5d3a5",
+  "defaultLimit": 50,
+  "supportedLimits": [
+    1,
+    100
+  ],
+  "httpVariantImplemented": true,
+  "httpVariantMeasured": false,
+  "independentAcceptance": "HTTP 8/8 and static 2640 pages reported passed; final publication boundary pending",
+  "httpsFetchVerified": false,
+  "deploymentEnabled": false,
+  "httpsPublished": false,
+  "livePublicationGetExecuted": false,
+  "httpVariantLlmMeasured": false,
+  "independentAcceptanceCompleted": false,
+  "independentPartialAcceptance": {
+    "source": "reported by separate independent reviewer",
+    "httpPassed": 8,
+    "httpTotal": 8,
+    "staticPagesValidated": 2640,
+    "finalPublicationBoundary": "pending"
+  }
+}

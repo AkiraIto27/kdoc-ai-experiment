@@ -1,0 +1,46 @@
+{
+  "state": "local_preparation_only",
+  "candidateOwner": "AkiraIto27",
+  "candidateRepository": "kdoc-ai-experiment",
+  "candidatePagesBaseUrl": "https://akiraito27.github.io/kdoc-ai-experiment/",
+  "nameCheck": {
+    "dateUTC": "2026-10-08",
+    "repositorySearch": "empty results",
+    "exactRepositoryGET": "404 Not Found",
+    "interpretation": "No accessible collision observed; recheck before creation. Inaccessible private repositories are not ruled out."
+  },
+  "preparedPagesSource": {
+    "branch": "main",
+    "directory": "/docs"
+  },
+  "repositoryCreated": false,
+  "gitInitialized": false,
+  "committed": false,
+  "pushed": false,
+  "pagesEnabled": false,
+  "adapterImplemented": true,
+  "newLlmTrials": 0,
+  "projectDependenciesAdded": 0,
+  "licenseSelected": false,
+  "httpsPublished": false,
+  "livePublicationGetExecuted": false,
+  "httpVariantLlmMeasured": false,
+  "independentAcceptanceCompleted": false,
+  "existingAuthentication": {
+    "connectedGithubLogin": "AkiraIto27",
+    "cliUserLookupMatched": true,
+    "networkSandboxEscapeUsedForReadOnlyLookup": true,
+    "credentialValuesRequestedOrExposed": false,
+    "authenticationChanged": false,
+    "permissionsExpanded": false,
+    "writeCapabilitiesProbed": false,
+    "requiredClassicRepoScopeConfirmedViaResponseMetadata": true
+  },
+  "independentPartialAcceptance": {
+    "source": "reported by separate independent reviewer",
+    "httpPassed": 8,
+    "httpTotal": 8,
+    "staticPagesValidated": 2640,
+    "finalPublicationBoundary": "pending"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "status": "implemented_compilation_passed_independent_tests_pending",
+  "scope": "Only variants/http-pages was changed in this implementation step",
+  "conditionCopies": {
+    "A": {
+      "files": 67,
+      "measuredHashMatch": true
+    },
+    "E": {
+      "files": 67,
+      "measuredHashMatch": true
+    }
+  },
+  "originalRepositoryUnchanged": true,
+  "pagesManifestUnchanged": true,
+  "pagesManifestSha256": "19a9eb360df2248b119702af2353121d37e2bb1a277df4efd0ac623ec6e5d3a5",
+  "publicVariantFiles": {
+    "API.md": {
+      "sha256": "09f831f04da17a0b5ca533721ee10bde20c17747b3756f340dcce8c9d894cc75",
+      "bytes": 2982
+    },
+    "README.md": {
+      "sha256": "2f7eb251e0bb36acfe227ab6dd91d9c2506d45281a15cfb7056b0705f4f3213f",
+      "bytes": 8674
+    },
+    "compile.py": {
+      "sha256": "3bcbd92b18158ddd12cf22d8bb49d0c0ef7040d877ea0255837c1245657e32ab",
+      "bytes": 2402
+    },
+    "src/main/kotlin/com/example/kdoctest/data/pages/CatalogHttpTransport.kt": {
+      "sha256": "7b3aab40d2d41892f003db1e3ae0b39766b309c7c1a761a0669b10e421796872",
+      "bytes": 4247
+    },
+    "src/main/kotlin/com/example/kdoctest/data/pages/PagesProductRepository.kt": {
+      "sha256": "2a94e5279ad2423be5091b670d176e96b6079c2ecb675688fb6c3ce159bc02a3",
+      "bytes": 11964
+    }
+  },
+  "contentScanFindings": [],
+  "compile": {
+    "exitCode": 0,
+    "kotlinCompiler": "2.3.10",
+    "jdk": "25.0.2",
+    "jvmTarget": "11",
+    "existingLibraries": {
+      "kotlinx-coroutines-core-jvm": "1.10.2",
+      "kotlinx-serialization-json-jvm": "1.9.0",
+      "kotlinx-serialization-core-jvm": "1.9.0"
+    },
+    "output": "build/classes"
+  },
+  "newDependenciesAdded": 0,
+  "catalogHttpsRequestsExecuted": 0,
+  "androidBuildExecuted": false,
+  "newLlmTrials": 0,
+  "repositoryCreated": false,
+  "pushed": false,
+  "pagesEnabled": false,
+  "billingChanged": false,
+  "authenticationChanged": false,
+  "publicationLabelsRequiringParentUpdate": [],
+  "nextStep": "Independent final publication-boundary acceptance before publication. HTTPS publication, live GET and HTTP LLM measurements remain unperformed.",
+  "publicationLabelsUpdated": true,
+  "independentPartialAcceptance": {
+    "source": "reported by separate independent reviewer",
+    "httpPassed": 8,
+    "httpTotal": 8,
+    "staticPagesValidated": 2640,
+    "finalPublicationBoundary": "pending"
+  },
+  "functionalTestsWrittenByImplementationAuthor": 0,
+  "functionalTestsExecutedByImplementationAuthor": 0
+}

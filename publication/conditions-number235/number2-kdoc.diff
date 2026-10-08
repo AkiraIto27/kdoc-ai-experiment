@@ -1,0 +1,180 @@
+--- conditions/A/app/src/main/java/com/example/kdoctest/MainActivity.kt
++++ conditions/number2/app/src/main/java/com/example/kdoctest/MainActivity.kt
+@@ -11,6 +11,9 @@
+ import com.example.kdoctest.presentation.catalog.CatalogViewModel
+ import com.example.kdoctest.ui.theme.KDocTestTheme
+ 
++/**
++ * メインActivity。
++ */
+ class MainActivity : ComponentActivity() {
+     private val catalogViewModel: CatalogViewModel by viewModels {
+         val scenario = if (BuildConfig.DEBUG) {
+@@ -26,6 +29,12 @@
+         CatalogViewModelFactory(applicationContext, scenario)
+     }
+ 
++    /**
++     * 作成時の処理。
++     *
++     * @param savedInstanceState 保存されたインスタンス状態。
++     * @return 戻り値はない。
++     */
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         enableEdgeToEdge()
+--- conditions/A/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt
++++ conditions/number2/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt
+@@ -13,7 +13,19 @@
+ import io.ktor.http.HttpStatusCode
+ import kotlinx.coroutines.CancellationException
+ 
++/**
++ * HTTPの商品リポジトリ。
++ *
++ * @param client HTTPクライアント。
++ */
+ class HttpProductRepository(private val client: HttpClient) : ProductRepository {
++    /**
++     * 商品を取得する。
++     *
++     * @param cursor カーソル。
++     * @param limit 件数。
++     * @return 商品ページ。
++     */
+     override suspend fun getProducts(cursor: String?, limit: Int): ProductPage {
+         if (limit !in 1..100) throw CatalogException.InvalidRequest("limit must be between 1 and 100")
+         val response = try {
+--- conditions/A/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt
++++ conditions/number2/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt
+@@ -2,12 +2,43 @@
+ 
+ import com.example.kdoctest.domain.model.ProductPage
+ 
++/**
++ * 商品リポジトリ。
++ */
+ interface ProductRepository {
++    /**
++     * 商品を取得する。
++     *
++     * @param cursor カーソル。
++     * @param limit 件数。
++     * @return 商品ページ。
++     */
+     suspend fun getProducts(cursor: String? = null, limit: Int = 50): ProductPage
+ }
+ 
++/**
++ * カタログ例外。
++ *
++ * @param message メッセージ。
++ * @param cause 原因。
++ */
+ sealed class CatalogException(message: String, cause: Throwable? = null) : Exception(message, cause) {
++    /**
++     * 利用不可例外。
++     *
++     * @param cause 原因。
++     */
+     class Unavailable(cause: Throwable? = null) : CatalogException("商品を取得できませんでした。", cause)
++    /**
++     * 不正なリクエスト例外。
++     *
++     * @param message メッセージ。
++     */
+     class InvalidRequest(message: String) : CatalogException(message)
++    /**
++     * 不正なレスポンス例外。
++     *
++     * @param cause 原因。
++     */
+     class InvalidResponse(cause: Throwable? = null) : CatalogException("商品データを読み取れませんでした。", cause)
+ }
+--- conditions/A/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt
++++ conditions/number2/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt
+@@ -3,7 +3,19 @@
+ import com.example.kdoctest.domain.model.ProductPage
+ import com.example.kdoctest.domain.repository.ProductRepository
+ 
++/**
++ * カタログページ取得。
++ *
++ * @param repository リポジトリ。
++ */
+ class LoadCatalogPage(private val repository: ProductRepository) {
++    /**
++     * 呼び出す。
++     *
++     * @param cursor カーソル。
++     * @param limit 件数。
++     * @return 商品ページ。
++     */
+     suspend operator fun invoke(cursor: String? = null, limit: Int = 50): ProductPage {
+         require(limit in 1..100) { "limit must be between 1 and 100" }
+         return repository.getProducts(cursor, limit)
+--- conditions/A/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt
++++ conditions/number2/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt
+@@ -11,8 +11,16 @@
+ import kotlinx.coroutines.flow.asStateFlow
+ import kotlinx.coroutines.launch
+ 
++/**
++ * カタログViewModel。
++ *
++ * @param useCase ユースケース。
++ */
+ class CatalogViewModel(private val useCase: LoadCatalogPage) : ViewModel() {
+     private val mutableUiState = MutableStateFlow(CatalogUiState())
++    /**
++     * UI状態。
++     */
+     val uiState: StateFlow<CatalogUiState> = mutableUiState.asStateFlow()
+ 
+     private var nextCursor: String? = null
+@@ -23,6 +31,11 @@
+         refresh()
+     }
+ 
++    /**
++     * 更新する。
++     *
++     * @return 戻り値はない。
++     */
+     fun refresh() {
+         val generation = ++requestGeneration
+         requestJob?.cancel()
+@@ -38,6 +51,11 @@
+         loadPage(cursor = null, replace = true, generation = generation)
+     }
+ 
++    /**
++     * 次ページを読み込む。
++     *
++     * @return 戻り値はない。
++     */
+     fun loadNextPage() {
+         val current = mutableUiState.value
+         val cursor = nextCursor ?: return
+@@ -52,6 +70,11 @@
+         loadPage(cursor = cursor, replace = false, generation = generation)
+     }
+ 
++    /**
++     * 再試行する。
++     *
++     * @return 戻り値はない。
++     */
+     fun retry() {
+         val current = mutableUiState.value
+         if (current.isLoading) return
+@@ -97,6 +120,9 @@
+     }
+ 
+     companion object {
++        /**
++         * ページサイズ。
++         */
+         const val PAGE_SIZE = 50
+     }
+ }

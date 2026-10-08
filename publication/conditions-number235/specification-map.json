@@ -1,0 +1,291 @@
+{
+  "reference": "Existing conditions/E = historical number4",
+  "purpose": "Every number4 KDoc specification item retained in compact number3; number5 retains exact number3 text and adds sourced background. No grading oracle or completed task answer.",
+  "sites": [
+    {
+      "id": "repository-interface",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number4_KDoc_sha256": "65e885ee05790caf4f1bc04da6dd84b12aa41a6f4fe73fd02e5609e674a21841",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number3_body": "商品一覧をカーソルでページ取得する契約。次の取得には[ProductPage.nextCursor]を使う。",
+      "specification_items": [
+        "商品一覧のカーソルによるページ取得の契約",
+        "返されたProductPage.nextCursorを次の取得に使用する"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "repository-getProducts",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number4_KDoc_sha256": "926501f94ebdbc72d17c6b64221fcbb6533d6bc6dc507a6dac11f11cb7f52f1a",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number3_body": "商品一覧の1ページを取得する。取得・例外・範囲外検証は実装に従う。\n\n@param cursor 前回の次カーソル。nullで先頭。\n@param limit 件数上限（1..100、既定50）。\n@return 商品とページ情報。空一覧もあり、次カーソルnullで終端。",
+      "specification_items": [
+        "商品一覧の1ページを取得する",
+        "取得処理と例外の扱いは実装に従う",
+        "cursorは前回返された次カーソル",
+        "cursor=nullは先頭ページ",
+        "limitは取得件数の上限",
+        "limitの範囲1..100・既定50",
+        "範囲外の検証方法は実装に従う",
+        "返却は商品一覧とページ情報",
+        "空の商品一覧もあり得る",
+        "次カーソルnullは次ページなし"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "catalog-exception",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number4_KDoc_sha256": "22e7da9a03745bc2122a25397e4c92e234b9c4bee99c0d1c71f4954885842bd0",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number3_body": "商品取得の失敗を取得不能・要求不正・応答不正に分類する例外。\n\n@param message 失敗の説明。\n@param cause 原因例外。なければnull。",
+      "specification_items": [
+        "商品一覧の取得失敗を分類する例外",
+        "取得不能・要求条件不正・応答データ不正の分類",
+        "messageは失敗内容の説明",
+        "causeは元の原因例外・なければnull"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "unavailable-exception",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number4_KDoc_sha256": "907ea926cbdbc4c4496103aa1ea014cd3ef676a5f56f1163c3a46c52ca685c8a",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number3_body": "取得先の異常や、要求・本文取得の失敗。\n\n@param cause 原因例外。HTTPステータスによる失敗など、原因がなければnull。",
+      "specification_items": [
+        "取得先の異常を表す",
+        "要求・応答本文の取得失敗を表す",
+        "causeは元の原因例外",
+        "HTTPステータスによる失敗など原因例外がなければnull"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "invalid-request-exception",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number4_KDoc_sha256": "1cb36a8495112da1d0a1d5dfe76c38f369138c2b48289d669947395e80bdadf6",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number3_body": "無効なページ取得条件を表す。\n\n@param message 無効な取得条件の説明。",
+      "specification_items": [
+        "ページ取得の条件が無効であることを表す",
+        "messageは無効な取得条件の説明"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "invalid-response-exception",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number4_KDoc_sha256": "8cae84b9b7608ff9a615b800c457f0ff31b082a4d47e233dde1cdfbc12feb112",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "number3_body": "受信商品データの解釈・モデル変換・検証の失敗。\n\n@param cause 原因例外。なければnull。",
+      "specification_items": [
+        "受信商品データの解釈・モデル変換・検証の失敗を表す",
+        "causeは元の原因例外・なければnull"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "load-catalog-page",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt",
+      "number4_KDoc_sha256": "49651df6d98f6e514035b6002caa8a1b0c59c81a39976039debe2b3f73c1ec23",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt",
+      "number3_body": "件数上限を検証後、商品ページ取得をリポジトリへ委譲する。\n\n@param repository カーソル解釈と商品ページ取得の実装。",
+      "specification_items": [
+        "取得件数の上限を検証してから取得をリポジトリへ委譲する",
+        "repositoryはカーソルの解釈と商品ページ取得を担う実装"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "load-catalog-page-invoke",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt",
+      "number4_KDoc_sha256": "3441352450fb5997311867d01bf00278cbd4a02e72a67e9aec0572680e53e854",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt",
+      "number3_body": "指定ページのリポジトリ結果を返す。取得中の例外・キャンセルはそのまま伝播する。\n\n@param cursor 前回の次カーソル。nullで先頭。\n@param limit 件数上限（1..100、既定50）。\n@return 商品とページ情報。空一覧もあり、次カーソルnullで終端。\n@throws IllegalArgumentException [limit]が範囲外。リポジトリは呼ばない。",
+      "specification_items": [
+        "指定ページのリポジトリ結果を返す",
+        "取得中の例外とキャンセルはそのまま伝播する",
+        "cursorは前回の次カーソル・nullは先頭",
+        "limitは件数上限・範囲1..100・既定50",
+        "返却は商品一覧とページ情報",
+        "空一覧もあり得る・次カーソルnullは次ページなし",
+        "limit範囲外はIllegalArgumentException",
+        "範囲外ではリポジトリを呼ばない"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "http-repository",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt",
+      "number4_KDoc_sha256": "9a827e7809ab35f79e6c2b6772ffafee7b327ac6109119ebd32004f2ff42ea0b",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt",
+      "number3_body": "注入HTTPクライアントで商品ページを取得し、JSONをドメインモデルへ変換する。\n\n@param client 取得用クライアント。生成・終了は呼び出し側が管理する。",
+      "specification_items": [
+        "注入されたHTTPクライアントで商品ページを取得する",
+        "JSONをドメインモデルへ変換する",
+        "clientは取得用・生成と終了は呼び出し側が管理する"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "http-getProducts",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt",
+      "number4_KDoc_sha256": "1a2a8a2b639278fb7ac919739cde5d3e3e085ae7fc89a1b71c4067ea05861e06",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt",
+      "number3_body": "`GET https://catalog.example.test/v1/products`で指定ページを取得する。\n本文をUTF-8・JSONとして読み、ページ条件を検証してドメインモデルへ変換する。\n\n@param cursor 前回の次カーソル。nullはクエリに含めず先頭を要求する。\n@param limit 件数上限（1..100）。範囲外ではHTTP要求しない。\n@return 商品・次カーソル・全件数・スナップショットID・本文バイト数。空一覧もあり、次カーソルnullで終端。\n@throws CatalogException.InvalidRequest [limit]範囲外、またはHTTP 400。\n@throws CatalogException.Unavailable 要求・本文取得失敗、またはHTTP 400以外の非2xx。\n@throws CatalogException.InvalidResponse 本文解釈・モデル変換・変換時検証の失敗。\n@throws CancellationException 取得のキャンセル。変換せず再送出する。",
+      "specification_items": [
+        "GET先URLと指定ページ取得",
+        "本文をUTF-8とJSONとして読む",
+        "ページ条件の検証とドメインモデル変換",
+        "cursorは前回取得した次カーソル",
+        "cursor=nullならクエリに含めず先頭ページを要求する",
+        "limitは件数上限1..100",
+        "limit範囲外ではHTTP要求を行わない",
+        "返却ページに商品・次カーソル・全件数・スナップショットID・本文バイト数を持つ",
+        "空一覧もあり得る・次カーソルnullは次ページなし",
+        "limit範囲外またはHTTP400はInvalidRequest",
+        "要求・本文取得失敗または400以外の非2xxはUnavailable",
+        "本文解釈・モデル変換・変換時検証失敗はInvalidResponse",
+        "キャンセルはCancellationExceptionを変換せず再送出する"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "main-activity",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/MainActivity.kt",
+      "number4_KDoc_sha256": "24254668b6eda247bc3d25104ecfad3188aee3d8dc226324d80fc71abf192c56",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/MainActivity.kt",
+      "number3_body": "一覧ViewModelをActivityに紐づけ、テーマ付き一覧画面を表示する。\nデバッグ時はIntentの`catalog_scenario`で空・取得失敗・追加取得失敗を選べる。\n未指定・未知の値・デバッグ以外は通常シナリオ。",
+      "specification_items": [
+        "商品一覧ViewModelをActivityに紐づける",
+        "テーマ付き一覧画面を表示する",
+        "デバッグビルドのIntent catalog_scenarioで空一覧・取得失敗・追加取得失敗を選べる",
+        "未指定または未知の値は通常シナリオ",
+        "デバッグ以外のビルドは通常シナリオ"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "activity-onCreate",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/MainActivity.kt",
+      "number4_KDoc_sha256": "0ee0253abe604578f9e9894f87e93df53964212e1d3c8a0006a6e326186472aa",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/MainActivity.kt",
+      "number3_body": "Activity初期化後、エッジツーエッジ表示を有効にしてCompose一覧画面を構成する。\n\n@param savedInstanceState フレームワークの復元用状態。復元状態がなければnull。",
+      "specification_items": [
+        "Activity初期化後にエッジツーエッジ表示を有効にする",
+        "商品一覧のCompose画面を構成する",
+        "savedInstanceStateはフレームワークが渡す復元用状態",
+        "復元する状態がなければnull"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "catalog-viewmodel",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number4_KDoc_sha256": "63f5b3f7dcc89ecba1b3520c910b4c68b7d427e9593c282998c8ca269d163d0d",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number3_body": "商品ページ取得を起動し、一覧・読み込み状態・失敗メッセージを[uiState]へ反映する。\n生成時に[refresh]で先頭取得を開始する。世代違いの成功・失敗は反映しない。\n取得キャンセルはエラー表示へ変換せず再送出する。\n\n@param useCase 全取得に[PAGE_SIZE]を指定するページ取得処理。",
+      "specification_items": [
+        "商品ページ取得を起動する",
+        "一覧・読み込み状態・失敗メッセージをuiStateに反映する",
+        "生成時refreshで先頭ページ取得を開始する",
+        "要求世代が一致しない成功と失敗は状態に反映しない",
+        "取得コルーチンのキャンセルをエラー表示に変換せず再送出する",
+        "useCaseは各ページ取得処理・全取得でPAGE_SIZEを指定する"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "ui-state",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number4_KDoc_sha256": "4bd35e2741c4447b7ed44295fc849f4c39e2c003ab8ac461b4bd00a5bcdf440e",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number3_body": "一覧画面用の読み取り専用状態。各エラーのnullは、その種別の表示対象エラーなし。\n成功時の`hasMore`は次カーソルがあり、表示件数が取得全件数より少ない場合にtrue。",
+      "specification_items": [
+        "一覧画面が監視する読み取り専用状態",
+        "各エラー値nullはその種別の表示対象エラーなし",
+        "成功時hasMoreは次カーソルありかつ表示件数が取得全件数より少ない場合true"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "refresh",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number4_KDoc_sha256": "8bb056069ee538b535c63d7d863fcf989168c650b7aa5470a4e77ba8898a4972",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number3_body": "進行中の取得をキャンセルし、エラーを消して先頭の非同期取得を開始する。\n取得中は商品を保持し、空なら初回読み込み、商品があれば更新中とする。\n成功は一覧を置換。失敗は商品・ページ情報を保持し、空なら`initialError`、あれば`refreshError`へメッセージを設定する。",
+      "specification_items": [
+        "進行中の取得をキャンセルする",
+        "エラー表示を消す",
+        "先頭ページの非同期取得を開始する",
+        "取得中は既存商品を保持する",
+        "商品なしは初回読み込み・商品ありは更新中の表示",
+        "成功時一覧を置き換える",
+        "失敗時商品とページ情報を保持する",
+        "失敗時商品なしはinitialError・商品ありはrefreshErrorにメッセージ設定"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "load-next-page",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number4_KDoc_sha256": "47c1268e50b6ec3278f405001472655bfc7a23db86e93e49f01fe92b2f51cd1f",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number3_body": "次カーソルの非同期取得を開始し、成功した商品のみ末尾へ追記する。\n次カーソルなし・取得中・`hasMore`がfalseなら何もしない。\n開始時に更新・追加取得エラーを消す。失敗は商品・ページ情報を保持し、`loadMoreError`を設定する。",
+      "specification_items": [
+        "次カーソルで非同期取得を開始する",
+        "成功した商品のみを既存一覧末尾へ追記する",
+        "次カーソルなし・いずれかの取得中・hasMore=falseでは何もしない",
+        "開始時に更新・追加取得エラーを消す",
+        "失敗時商品とページ情報を保持する",
+        "失敗時loadMoreErrorにメッセージ設定"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "retry",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number4_KDoc_sha256": "13f86c7690b755bc1540a01b22b7430193ebbffb25c58f2d794090e75d74aea4",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number3_body": "初回・更新失敗は[refresh]、追加取得失敗は[loadNextPage]で再試行する。\n取得中・エラーなしなら何もしない。",
+      "specification_items": [
+        "表示中の失敗に応じて再試行する",
+        "初回・更新失敗ならrefresh",
+        "追加取得失敗ならloadNextPage",
+        "取得中またはエラーなしでは何もしない"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    },
+    {
+      "id": "page-size",
+      "number4_source": "conditions/E/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number4_KDoc_sha256": "dc34f011319c7e2278be068fec9d86915d987188c858ae378bf2c116e86a0104",
+      "number3_source": "conditions/number3/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "number3_body": "初回・更新・追加取得に共通の、1ページの件数上限。",
+      "specification_items": [
+        "初回・更新・追加取得に共通で指定する1ページの件数上限"
+      ],
+      "meaning_review_status": "prepared; independent review pending",
+      "note": "Specification comes from existing number4/E KDoc, not grading assertions."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "additions": [
+    {
+      "id": "repository-interface",
+      "number5_source": "conditions/number5/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "additional_background": "背景: 単一appのdata・domain・presentationをパッケージで分離し、Repositoryを取得実装との境界に置く。",
+      "evidence_references": [
+        "conditions/A/README.md: 構成・層の参照方向",
+        "conditions/A/docs/adr/0001-catalog-baseline.md: 単一app内の責務分離・Repositoryを境界とする構成"
+      ],
+      "type": "documented project background/design choice; no new method precondition or outcome"
+    },
+    {
+      "id": "load-catalog-page",
+      "number5_source": "conditions/number5/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt",
+      "additional_background": "背景: domain層はdata・presentation層を参照しない構成で、具象の取得実装をRepository境界の外側に置く。",
+      "evidence_references": [
+        "conditions/A/README.md: domainからdata/presentationを参照しない",
+        "conditions/A/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt: ProductRepositoryへの依存"
+      ],
+      "type": "documented project background/design choice; no new method precondition or outcome"
+    },
+    {
+      "id": "http-repository",
+      "number5_source": "conditions/number5/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt",
+      "additional_background": "背景: 比較の再現性と外部依存の少なさを優先し、共通アプリでは固定JSONを返すKtor MockEngineを注入する。JSON解析・変換まで通し、ソケット・TLS・DNSは評価対象外とする。",
+      "evidence_references": [
+        "conditions/A/docs/adr/0001-catalog-baseline.md: 判断軸・MockEngine選択理由",
+        "conditions/A/README.md: 固定500商品・外部API/キー不要",
+        "conditions/A/app/src/main/java/com/example/kdoctest/di/CatalogViewModelFactory.kt: createCatalogHttpClientを注入"
+      ],
+      "type": "documented project background/design choice; no new method precondition or outcome"
+    },
+    {
+      "id": "main-activity",
+      "number5_source": "conditions/number5/app/src/main/java/com/example/kdoctest/MainActivity.kt",
+      "additional_background": "背景: 架空の業務用備品カタログで、在庫不明と欠品を分け、販売単位ごとの価格を表示する。",
+      "evidence_references": [
+        "conditions/A/README.md: アプリの目的・在庫不明と欠品・販売単位価格",
+        "conditions/A/app/src/main/java/com/example/kdoctest/presentation/catalog/ProductFormatter.kt: 価格・在庫表示"
+      ],
+      "type": "documented project background/design choice; no new method precondition or outcome"
+    },
+    {
+      "id": "catalog-viewmodel",
+      "number5_source": "conditions/number5/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "additional_background": "背景: 固定500件の共通基盤では、状態・失敗・再試行を直接確認できるよう、StateFlowと明示的な追加読み込みを採用する。",
+      "evidence_references": [
+        "conditions/A/docs/adr/0001-catalog-baseline.md: StateFlowと明示的追加読み込みの採用理由",
+        "conditions/A/README.md: 固定500商品"
+      ],
+      "type": "documented project background/design choice; no new method precondition or outcome"
+    }
+  ],
+  "unverified_rationales_not_added": [
+    "既定50件・上限100件という数値を選んだ理由は資料に明記されていない。通信負荷や性能が理由だとは記載しない。",
+    "要求世代カウンター、エラー種別、税区分の個別設計理由は明記されていない。既存の契約・動作説明は保持するが、作者の意図を補わない。"
+  ],
+  "number3_to_number5_contract": "Same number3 KDoc body retained verbatim at each site, with five background paragraphs appended."
+}

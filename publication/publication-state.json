@@ -1,5 +1,5 @@
 {
-  "state": "local_preparation_only",
+  "state": "initial_release_published_status_followup_pending_review",
   "candidateOwner": "AkiraIto27",
   "candidateRepository": "kdoc-ai-experiment",
   "candidatePagesBaseUrl": "https://akiraito27.github.io/kdoc-ai-experiment/",
@@ -13,19 +13,19 @@
     "branch": "main",
     "directory": "/docs"
   },
-  "repositoryCreated": false,
-  "gitInitialized": false,
-  "committed": false,
-  "pushed": false,
-  "pagesEnabled": false,
+  "repositoryCreated": true,
+  "gitInitialized": true,
+  "committed": true,
+  "pushed": true,
+  "pagesEnabled": true,
   "adapterImplemented": true,
   "newLlmTrials": 0,
   "projectDependenciesAdded": 0,
   "licenseSelected": false,
-  "httpsPublished": false,
-  "livePublicationGetExecuted": false,
+  "httpsPublished": true,
+  "livePublicationGetExecuted": true,
   "httpVariantLlmMeasured": false,
-  "independentAcceptanceCompleted": false,
+  "independentAcceptanceCompleted": true,
   "existingAuthentication": {
     "connectedGithubLogin": "AkiraIto27",
     "cliUserLookupMatched": true,
@@ -41,6 +41,49 @@
     "httpPassed": 8,
     "httpTotal": 8,
     "staticPagesValidated": 2640,
-    "finalPublicationBoundary": "pending"
+    "finalPublicationBoundary": "accepted for initial publication; status-only followup pending review"
+  },
+  "initialPublicationCommitSha": "a5d562ac59ddac2b6d4e3207cf877d472cbfec40",
+  "initialIndependentAcceptanceCompleted": true,
+  "independentStatusUpdateAcceptanceCompleted": false,
+  "statusOnlyFollowup": "pending independent review; not committed or pushed",
+  "repositoryUrl": "https://github.com/AkiraIto27/kdoc-ai-experiment",
+  "pagesUrl": "https://akiraito27.github.io/kdoc-ai-experiment/",
+  "deploymentStatus": "built",
+  "liveJsonFiles": [
+    {
+      "url": "https://akiraito27.github.io/kdoc-ai-experiment/data/catalog-v1/manifest.json",
+      "status": 200,
+      "sha256": "19a9eb360df2248b119702af2353121d37e2bb1a277df4efd0ac623ec6e5d3a5",
+      "bytes": 466685,
+      "matchesApprovedFile": true
+    },
+    {
+      "url": "https://akiraito27.github.io/kdoc-ai-experiment/data/catalog-v1/limits/50/first.json",
+      "status": 200,
+      "sha256": "9a95e7cb3e6ee2231cb44031c02133395ff93430d05023d574a0fd39dc9ab725",
+      "bytes": 128636,
+      "matchesApprovedFile": true,
+      "items": 50,
+      "totalCount": 500,
+      "nextCursor": "babc3dd72b0ee57cbbc16dda31973322445e3e5dd6f235dd4bf0ada655356579"
+    },
+    {
+      "url": "https://akiraito27.github.io/kdoc-ai-experiment/data/catalog-v1/products.json",
+      "status": 200,
+      "sha256": "5102e643ca1beaedaf98535f893fd5c0d874e013d0acfc51ab98e3f5740c378d",
+      "bytes": 1276881,
+      "matchesApprovedFile": true
+    }
+  ],
+  "liveAdapterSmoke": {
+    "liveHttpsProductGetSucceeded": true,
+    "items": 50,
+    "totalCount": 500,
+    "snapshotId": "catalog-v1",
+    "responseBytes": 128636,
+    "nextCursor": "babc3dd72b0ee57cbbc16dda31973322445e3e5dd6f235dd4bf0ada655356579",
+    "firstProductId": "product-0497",
+    "llmTrials": 0
   }
 }

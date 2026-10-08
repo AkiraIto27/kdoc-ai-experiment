@@ -616,7 +616,7 @@
     "The common six-file .tools harness is excluded: it contains host-specific JDK/Kotlin paths and bundled third-party JARs.",
     "Excluded files are recorded by relative name and SHA-256; public application, tests, docs, assets and Gradle infrastructure are byte-identical to the measured initial trees.",
     "This sourceHead identifies the original Git HEAD, not the complete dirty local source tree. Use the file hashes below to identify this publication.",
-    "This is publication preparation. No repository creation, push or Pages activation has occurred."
+    "Source selection was audited before publication. Current release status is recorded separately in publication-state.json."
   ],
   "oct8CohortSealVerification": [
     {

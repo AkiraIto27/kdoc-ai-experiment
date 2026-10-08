@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "state": "local_candidate_final_independent_publication_acceptance_pending",
+  "state": "initial_release_published_status_only_followup_pending_independent_review",
   "candidate": "AkiraIto27/kdoc-ai-experiment",
   "allowlistFile": ".publication-allowlist",
   "approvedFiles": 2897,
@@ -8,7 +8,7 @@
   "hashExclusion": [
     "publication/final-publication-manifest.json"
   ],
-  "treeSha256": "c1b9cb96fb0d397e76306d7c36940b0d2d0af20c224baeb2ae3e0abc88bf27d3",
+  "treeSha256": "398e33d102551f44003850bd29ac4f57f6959ac292dc824625d2b96d055e442e",
   "hashAlgorithm": "SHA-256 of sorted relativePath + NUL + fileSha256 + NUL + gitMode + LF, excluding this manifest",
   "measuredConditions": {
     "A": 67,
@@ -35,18 +35,18 @@
     "httpPassed": 8,
     "httpTotal": 8,
     "staticPagesValidated": 2640,
-    "finalPublicationBoundary": "pending"
+    "finalPublicationBoundary": "accepted for initial publication; status-only followup pending review"
   },
   "httpAdapterImplemented": true,
   "httpVariantLlmMeasured": false,
-  "httpsPublished": false,
-  "livePublicationGetExecuted": false,
-  "independentAcceptanceCompleted": false,
-  "githubCreated": false,
-  "candidateGitInitialized": false,
+  "httpsPublished": true,
+  "livePublicationGetExecuted": true,
+  "independentAcceptanceCompleted": true,
+  "githubCreated": true,
+  "candidateGitInitialized": true,
   "staged": false,
-  "committed": false,
-  "pushed": false,
+  "committed": true,
+  "pushed": true,
   "newDependenciesAdded": 0,
   "newAuthenticationRequiredForRead": false,
   "credentialValuesRequestedOrExposed": false,
@@ -63,8 +63,8 @@
       "gitMode": "100644"
     },
     "README.md": {
-      "sha256": "f65167aba1f56cbfceaaa2f300565214f2020527485b9b8f9e8f7782b837fc90",
-      "bytes": 5256,
+      "sha256": "b009d598ae97e189220fd6a189ff050525a4a8badda000811b0e9851bd7fecc4",
+      "bytes": 5402,
       "gitMode": "100644"
     },
     "conditions/A/.gitignore": {
@@ -14458,18 +14458,18 @@
       "gitMode": "100644"
     },
     "docs/index.html": {
-      "sha256": "0d187c654499fb5c4c64cd930226bd23a39559bfb44f3f20e6b17c27a477ea45",
-      "bytes": 1591,
+      "sha256": "b1d970be791cea40a25a704bfd14f6954ff9ee108715a0bf62458c574e6a0fbf",
+      "bytes": 1586,
       "gitMode": "100644"
     },
     "publication/MEASURED-VERSIONS.md": {
-      "sha256": "cab66730225c85d8c07abd3227fa2ab7f5c47a789e05ae607ce2c9641340de44",
-      "bytes": 5668,
+      "sha256": "c7352b22cc86f63ee7b41c74d0777c753dd591febb3fc3c6a71147ac0f10c723",
+      "bytes": 5622,
       "gitMode": "100644"
     },
     "publication/RELEASE-PLAN.md": {
-      "sha256": "84595bbf389a521eddb48df94eb04d59388f5df4072bf453033d29a3299d1839",
-      "bytes": 6006,
+      "sha256": "2c3cf3ea68b547e6b546c5335adee227f5a7f5b93c9a4ea5ee52aa97598afbf4",
+      "bytes": 6194,
       "gitMode": "100644"
     },
     "publication/ae-kdoc.diff": {
@@ -14478,23 +14478,23 @@
       "gitMode": "100644"
     },
     "publication/copy-verification.json": {
-      "sha256": "5d93ab13ff969275a567f3272c84751f2f37bd3dc84f778f07e9fe95612014bb",
-      "bytes": 2898,
+      "sha256": "b9a6efadb1b7bb493046ba9cda1898638a5bd79d1c65ca8934f8f2a441f57d60",
+      "bytes": 3217,
       "gitMode": "100644"
     },
     "publication/pages-build.json": {
-      "sha256": "b9ed61c6788818537cf31727ec4352101b3e17ec19d4c99cbd39aa9725935997",
-      "bytes": 1075,
+      "sha256": "e6965abe1289193cf500571bc0d279df47b1ca013895513a5a5cba2da90b67e7",
+      "bytes": 1379,
       "gitMode": "100644"
     },
     "publication/publication-state.json": {
-      "sha256": "2b5908da2d7050dfc1f1434b55cf55a220bf1be725b1c9df7bb7a07990cb09f2",
-      "bytes": 1534,
+      "sha256": "74351c0d320e7699ab079234da21ee30c3ea0e6c0e6f316c6e1bc168ee937610",
+      "bytes": 3337,
       "gitMode": "100644"
     },
     "publication/source-manifest.json": {
-      "sha256": "740f352fde7793b612e8edd058dd3c1b0afa6277914535647dcc0c45607e4942",
-      "bytes": 29201,
+      "sha256": "600a6b352e296094c74f7c3234dca8c82d58c780485acdf9637f2e18788fe015",
+      "bytes": 29227,
       "gitMode": "100644"
     },
     "scripts/build_pages_data.py": {
@@ -14503,13 +14503,13 @@
       "gitMode": "100644"
     },
     "variants/http-pages/API.md": {
-      "sha256": "09f831f04da17a0b5ca533721ee10bde20c17747b3756f340dcce8c9d894cc75",
-      "bytes": 2982,
+      "sha256": "dd5fadb1b124607ae5ccbbd783a87ad20c7f901796d2155b915a542c281cf9f9",
+      "bytes": 3044,
       "gitMode": "100644"
     },
     "variants/http-pages/README.md": {
-      "sha256": "2f7eb251e0bb36acfe227ab6dd91d9c2506d45281a15cfb7056b0705f4f3213f",
-      "bytes": 8674,
+      "sha256": "747a06c1a6a79fc58caea038f4b7fc0f809b33e314fa9981360a0fa51efd4f28",
+      "bytes": 8739,
       "gitMode": "100644"
     },
     "variants/http-pages/compile.py": {
@@ -14518,8 +14518,8 @@
       "gitMode": "100644"
     },
     "variants/http-pages/implementation-verification.json": {
-      "sha256": "d64f725cb8744d2a992f451c6d665d37522298217ada91cf10b909da992181b0",
-      "bytes": 2466,
+      "sha256": "56ac796de0346b734c0d070107063c994a80ef12577dea6df6cd0ebf642c2296",
+      "bytes": 3215,
       "gitMode": "100644"
     },
     "variants/http-pages/src/main/kotlin/com/example/kdoctest/data/pages/CatalogHttpTransport.kt": {
@@ -14534,11 +14534,11 @@
     }
   },
   "notes": [
-    "Only allowlisted relative paths may be staged into a freshly initialized candidate repository.",
-    "The original Git history, private graders, raw traces, credential/local files and build output are excluded.",
-    "Build files are preserved on disk; none is allowlisted; all 77 match gitignore.",
-    "Gitignore does not inspect file content; reviewed text contains no detected secret, email, user/machine absolute path.",
-    "Independent HTTP 8/8 and static 2640 page acceptance are reviewer-reported; final publication acceptance is pending.",
-    "Any approved edit or publication-status change requires a fresh manifest/seal."
-  ]
+    "Initial approved snapshot was published with a new root commit; original history and build output were excluded.",
+    "This revision updates publication status only and awaits independent review before commit/push.",
+    "Measured A/E files, Kotlin implementation, generators and every page JSON remain byte-identical to the initial publication.",
+    "Any approved edit requires a fresh manifest/seal."
+  ],
+  "initialPublicationCommitSha": "a5d562ac59ddac2b6d4e3207cf877d472cbfec40",
+  "independentStatusUpdateAcceptanceCompleted": false
 }

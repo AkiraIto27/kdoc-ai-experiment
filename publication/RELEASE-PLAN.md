@@ -1,6 +1,6 @@
 # Publication candidate and release procedure
 
-Current state: HTTP adapter implemented and JVM compilation passed. The separate reviewer reported HTTP acceptance 8/8 and static data acceptance for all 2640 pages. Final publication-boundary acceptance is pending. HTTPS publication, live GET from the publication URL, and HTTP-variant LLM measurements have not occurred. This file records a procedure; no publish command has been executed.
+Current state: the independently accepted initial snapshot was published as commit `a5d562ac59ddac2b6d4e3207cf877d472cbfec40`. HTTP acceptance 8/8, static acceptance of all 2640 pages, and the initial publication boundary passed. Pages main /docs deployment completed successfully; public JSON returned HTTP 200 with matching hashes, and the adapter fetched the default 50 products. HTTP-variant LLM measurements remain unperformed. This status-only followup is awaiting independent review before its own commit/push.
 
 ## Candidate boundary
 
@@ -29,4 +29,4 @@ For [personal repository creation](https://docs.github.com/en/rest/repos/repos#c
 7. Create Pages through `POST /repos/AkiraIto27/kdoc-ai-experiment/pages`, with `build_type=legacy` and source `branch=main, path=/docs`. Use `gh api` with a structured request body file and the already configured authentication. If HTTPS enforcement needs an ordinary Pages update after certificate issuance, use the same repository's Pages endpoint. No custom domain, runner, billing or account-wide setting is required.
 8. Read the Pages deployment result and verify the published HTTPS root, manifest and representative pages by live GET. This is publication smoke verification, not an LLM experiment. Record the observed URL and hashes, then refresh publication status honestly. An HTTP adapter's complete contract and cancellation tests belong to the independent acceptance suite.
 
-The workflow above intentionally has no automatic publish script or scheduled deployment. Publication remains held until independent acceptance. Standard public-repository/Pages hosting fits [GitHub's free offering](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages), within its published limits. No paid resource or broader permission setting is part of this plan.
+The workflow above intentionally has no automatic publish script or scheduled deployment. The initial release followed independent acceptance. Any changed candidate is reviewed and sealed again before push. Standard public-repository/Pages hosting fits [GitHub's free offering](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages), within its published limits. No paid resource or broader permission setting is part of this plan.

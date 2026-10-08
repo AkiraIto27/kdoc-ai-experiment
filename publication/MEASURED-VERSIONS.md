@@ -38,7 +38,7 @@ Eから追加KDocだけを取り除くとAと一致します。5ファイル以�
 | 項目 | 保存したA/E | 新規Pages/HTTP variant |
 | --- | --- | --- |
 | Repository API | `getProducts(cursor: String? = null, limit: Int = 50)` | 同じdomain APIを実装 |
-| データ取得 | Ktor MockEngineが500商品assetからページ生成 | 静的ページDTO JSONをGETするアダプターを実装。公開URLへのlive GETは未実施 |
+| データ取得 | Ktor MockEngineが500商品assetからページ生成 | 静的ページDTO JSONをGETするアダプターを実装。公開URLから既定50件を取得済み |
 | limit | 1..100、既定50 | 同じ範囲の全正常ページを事前生成 |
 | cursor | snapshot/limit/offsetを含むSHA-256 | 同じ計算結果を索引とページ名に使用 |
 | 並び順 | 更新Instant降順、ID昇順 | 同じ順序で生成 |
@@ -55,4 +55,4 @@ Eから追加KDocだけを取り除くとAと一致します。5ファイル以�
 - `data/dto/ProductMapper.kt`:16–22 — ページのitems数・一意性・nextCursor等の検証。
 - `data/repository/HttpProductRepository.kt`:18–46 — 入力拒否、HTTP状態/body、cancel再throw、DTO変換。
 
-同じAPI形状でも通信先を変更した版は追加条件です。PagesのJSON hashと生成規模は[pages-build.json](pages-build.json)、実装と未実施範囲は[HTTP版仕様](../variants/http-pages/README.md)に分けています。HTTP版は実装済みで、独立担当からHTTP受入8/8と静的2640ページの成功が報告されています。最終公開対象確認は未完了です。HTTPS公開・公開URLへのlive GET・HTTP版でのLLM実測は未実施です。
+同じAPI形状でも通信先を変更した版は追加条件です。PagesのJSON hashと生成規模は[pages-build.json](pages-build.json)、実装と未実施範囲は[HTTP版仕様](../variants/http-pages/README.md)に分けています。独立HTTP受入8/8、静的2640ページ、初回公開対象確認が成功しました。HTTPS公開と公開URLへのlive GETも確認済みです。HTTP版でのLLM実測は未実施です。

@@ -1,6 +1,6 @@
 # Pages HTTP版（実装済み・未計測）
 
-このディレクトリに独立したHTTPアダプターを実装しています。`conditions/A`と`conditions/E`には手を加えていません。実測初期ソースにも実測結果にも、このHTTP版は含まれません。依存追加、公開URLへのlive GET、Android組み込み、新たなLLM計測は行っていません。HTTPS公開は未実施です。
+このディレクトリに独立したHTTPアダプターを実装しています。`conditions/A`と`conditions/E`には手を加えていません。実測初期ソースにも実測結果にも、このHTTP版は含まれません。PagesでHTTPS公開し、このアダプターで公開URLから既定50件を取得しました。依存追加、Android組み込み、新たなLLM計測は行っていません。
 
 公開API・例外仕様は[API.md](API.md)、実装は`src/main/kotlin/com/example/kdoctest/data/pages/`にあります。独立テスト担当は`CatalogHttpTransport`へ別実装を注入できます。
 
@@ -43,7 +43,7 @@ manifestは固定fixture版hashを検証し、索引とページbodyは公開man
 
 元500件JSONは`docs/data/catalog-v1/products.json`、生成器は`scripts/build_pages_data.py`として公開候補に含まれています。各A/Eアセットもbyte一致で保持します。公開データ版のhashは`5102e643ca1beaedaf98535f893fd5c0d874e013d0acfc51ab98e3f5740c378d`です。
 
-リポジトリの作成、push、Pages有効化、公開URLへのlive GET、Androidへの組み込み、新たなLLM計測は未実施です。別thread/contextの独立担当からHTTP受入8/8と静的2640ページの検証成功が報告されています。最終の公開対象確認は未完了です。実装担当自身は機能テストを作成・実行していません。
+リポジトリの作成、push、Pages有効化、deploy完了、公開URLへのlive GETを確認しました。別thread/contextの独立HTTP受入8/8・静的2640ページ・初回公開対象確認も成功しています。実装担当は機能テストを作成せず、依頼された最小live取得smokeだけを実行しました。Androidへの組み込みと新たなLLM計測は未実施です。
 
 ## 既存ツールでのコンパイル
 

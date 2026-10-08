@@ -1,5 +1,5 @@
 {
-  "status": "implemented_compilation_passed_independent_tests_pending",
+  "status": "initial_independent_acceptance_passed_live_https_smoke_succeeded_status_followup_pending_review",
   "scope": "Only variants/http-pages was changed in this implementation step",
   "conditionCopies": {
     "A": {
@@ -16,12 +16,12 @@
   "pagesManifestSha256": "19a9eb360df2248b119702af2353121d37e2bb1a277df4efd0ac623ec6e5d3a5",
   "publicVariantFiles": {
     "API.md": {
-      "sha256": "09f831f04da17a0b5ca533721ee10bde20c17747b3756f340dcce8c9d894cc75",
-      "bytes": 2982
+      "sha256": "dd5fadb1b124607ae5ccbbd783a87ad20c7f901796d2155b915a542c281cf9f9",
+      "bytes": 3044
     },
     "README.md": {
-      "sha256": "2f7eb251e0bb36acfe227ab6dd91d9c2506d45281a15cfb7056b0705f4f3213f",
-      "bytes": 8674
+      "sha256": "747a06c1a6a79fc58caea038f4b7fc0f809b33e314fa9981360a0fa51efd4f28",
+      "bytes": 8739
     },
     "compile.py": {
       "sha256": "3bcbd92b18158ddd12cf22d8bb49d0c0ef7040d877ea0255837c1245657e32ab",
@@ -50,24 +50,42 @@
     "output": "build/classes"
   },
   "newDependenciesAdded": 0,
-  "catalogHttpsRequestsExecuted": 0,
+  "catalogHttpsRequestsExecuted": 3,
   "androidBuildExecuted": false,
   "newLlmTrials": 0,
-  "repositoryCreated": false,
-  "pushed": false,
-  "pagesEnabled": false,
+  "repositoryCreated": true,
+  "pushed": true,
+  "pagesEnabled": true,
   "billingChanged": false,
   "authenticationChanged": false,
   "publicationLabelsRequiringParentUpdate": [],
-  "nextStep": "Independent final publication-boundary acceptance before publication. HTTPS publication, live GET and HTTP LLM measurements remain unperformed.",
+  "nextStep": "Review this status-only followup before commit/push; no implementation or data changes.",
   "publicationLabelsUpdated": true,
   "independentPartialAcceptance": {
     "source": "reported by separate independent reviewer",
     "httpPassed": 8,
     "httpTotal": 8,
     "staticPagesValidated": 2640,
-    "finalPublicationBoundary": "pending"
+    "finalPublicationBoundary": "accepted for initial publication; status-only followup pending review"
   },
   "functionalTestsWrittenByImplementationAuthor": 0,
-  "functionalTestsExecutedByImplementationAuthor": 0
+  "functionalTestsExecutedByImplementationAuthor": 0,
+  "initialPublicationCommitSha": "a5d562ac59ddac2b6d4e3207cf877d472cbfec40",
+  "initialIndependentAcceptanceCompleted": true,
+  "independentStatusUpdateAcceptanceCompleted": false,
+  "httpsPublished": true,
+  "livePublicationGetExecuted": true,
+  "httpVariantLlmMeasured": false,
+  "statusOnlyFollowup": "pending independent review; not committed or pushed",
+  "liveAdapterSmoke": {
+    "liveHttpsProductGetSucceeded": true,
+    "items": 50,
+    "totalCount": 500,
+    "snapshotId": "catalog-v1",
+    "responseBytes": 128636,
+    "nextCursor": "babc3dd72b0ee57cbbc16dda31973322445e3e5dd6f235dd4bf0ada655356579",
+    "firstProductId": "product-0497",
+    "llmTrials": 0
+  },
+  "publicHttpsFilesVerified": 4
 }

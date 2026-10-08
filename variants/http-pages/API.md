@@ -44,4 +44,4 @@ class PagesProductRepository(
 
 正常返却は既存`ProductPage`を使います。ページbodyのSHA-256と索引のbyte数を検証し、ページbodyのbyte長を`responseBytes`にします。これはtoken数や圧縮後wire byte数ではありません。metadataの通信量は含めません。
 
-このAPIは旧A/E実測版とは別variantです。独立担当がテストを作成します。公開・実HTTPS取得・新LLM計測はまだ行いません。
+このAPIは旧A/E実測版とは別variantです。独立担当のHTTP受入8/8が成功し、公開済みPagesから既定50件を取得するlive smokeも成功しました。HTTP版での新LLM計測は未実施です。

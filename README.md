@@ -1,6 +1,6 @@
 # KDoc AI experiment — publication candidate
 
-Kotlin Fest発表「そのKDoc、Javadocのままになっていませんか？〜Kotlinらしい書き方とAI時代の新たな役割〜」のA/E比較で使った初期ソースと、架空の商品データの公開準備です。**HTTP版は実装済み・未計測です。HTTPS公開、公開URLへのlive GET、HTTP版でのLLM実測は未実施です。**
+Kotlin Fest発表「そのKDoc、Javadocのままになっていませんか？〜Kotlinらしい書き方とAI時代の新たな役割〜」のA/E比較で使った初期ソースと、公開した架空の商品データです。**HTTP版は実装済みで、PagesのHTTPS公開と公開URLへのlive GETを確認しました。HTTP版でのLLM実測は未実施です。**
 
 | 場所 | 内容 | 実測との関係 |
 | --- | --- | --- |
@@ -20,9 +20,9 @@ A/Eは各条件を独立したGradleプロジェクトとして保持します�
 
 ## Pages配信候補
 
-候補は `AkiraIto27/kdoc-ai-experiment`、プロジェクトサイトの候補URLは `https://akiraito27.github.io/kdoc-ai-experiment/` です。リポジトリ作成、push、Pages設定は未実施です。公開する場合の設定案はmainブランチの`/docs`を配信元にする方式です。
+公開先は[AkiraIto27/kdoc-ai-experiment](https://github.com/AkiraIto27/kdoc-ai-experiment)、Pagesは[https://akiraito27.github.io/kdoc-ai-experiment/](https://akiraito27.github.io/kdoc-ai-experiment/)です。mainブランチの`/docs`を配信元とし、deploy完了を確認しました。初回公開commitは`a5d562ac59ddac2b6d4e3207cf877d472cbfec40`です。
 
-ページ化済みJSONの例（公開後に有効になる予定の相対URL）:
+ページ化済みJSONの相対URL:
 
 - `data/catalog-v1/manifest.json`: 版hash・件数・limit索引。
 - `data/catalog-v1/products.json`: 実測fixtureと同じbyte列の全500件。単一ページとしてページ変換器へ渡さないでください。
@@ -35,4 +35,4 @@ A/Eは各条件を独立したGradleプロジェクトとして保持します�
 
 Pagesは静的配信なので、URLクエリからページを作ったり、条件に応じて400/503を返したりするAPIは提供できません。limit/cursorの解決と入力拒否を[HTTPアダプター](variants/http-pages/README.md)に実装しています。[公開API](variants/http-pages/API.md)にエラー・cancel・返却値を記載しています。HTTP通信を導入した版の挙動や計測値を、保存したA/Eの実測結果へ混ぜないでください。
 
-この準備では依存追加、Gradleテスト、Androidビルド、新たなLLM試行を行っていません。既存JARを使うJVMコンパイルは成功しています。別thread/contextの独立担当からHTTP受入8/8と静的2640ページの検証成功が報告されています。最終の公開対象確認は未完了で、合格後に公開へ進めます。実装時の確認範囲は[HTTP実装記録](variants/http-pages/implementation-verification.json)、公開対象は[最終manifest](publication/final-publication-manifest.json)に記載しています。
+依存追加、Gradleテスト、Androidビルド、新たなLLM試行は行っていません。既存JARを使うJVMコンパイル、別thread/contextでのHTTP受入8/8・静的2640ページ・初回公開対象の独立確認が成功しています。公開後はmanifest・既定50件ページ・全500件JSONのHTTP 200とbyte/hash一致、およびHTTPアダプターによる既定50件取得を確認しました。実装時の確認範囲は[HTTP実装記録](variants/http-pages/implementation-verification.json)、公開状態は[状態記録](publication/publication-state.json)、ファイル一覧は[manifest](publication/final-publication-manifest.json)に記載しています。

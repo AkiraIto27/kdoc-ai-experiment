@@ -43,17 +43,17 @@
   ],
   "privateGraderRawLogsConversationsCopied": false,
   "llmTrialsExecuted": 0,
-  "independentAcceptanceCompleted": false,
+  "independentAcceptanceCompleted": true,
   "httpAdapterImplemented": true,
-  "httpsPublished": false,
-  "livePublicationGetExecuted": false,
+  "httpsPublished": true,
+  "livePublicationGetExecuted": true,
   "httpVariantLlmMeasured": false,
   "independentPartialAcceptance": {
     "source": "reported by separate independent reviewer",
     "httpPassed": 8,
     "httpTotal": 8,
     "staticPagesValidated": 2640,
-    "finalPublicationBoundary": "pending"
+    "finalPublicationBoundary": "accepted for initial publication; status-only followup pending review"
   },
   "runtimeTestsExecutedByPublicationPreparer": false,
   "publicationAllowlistFiles": 2897,
@@ -66,5 +66,9 @@
     "usedSeparatePrivateScratchRepository": true
   },
   "buildFilesPreserved": 77,
-  "buildFilesAllowlisted": 0
+  "buildFilesAllowlisted": 0,
+  "initialPublicationCommitSha": "a5d562ac59ddac2b6d4e3207cf877d472cbfec40",
+  "initialIndependentAcceptanceCompleted": true,
+  "independentStatusUpdateAcceptanceCompleted": false,
+  "statusOnlyFollowup": "pending independent review; not committed or pushed"
 }

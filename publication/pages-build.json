@@ -6,7 +6,7 @@
   "normalPages": 2640,
   "generatedFiles": 2743,
   "generatedBytes": 131066904,
-  "pagesDirectoryBytes": 131068495,
+  "pagesDirectoryBytes": 131068490,
   "manifestSha256": "19a9eb360df2248b119702af2353121d37e2bb1a277df4efd0ac623ec6e5d3a5",
   "defaultLimit": 50,
   "supportedLimits": [
@@ -15,18 +15,22 @@
   ],
   "httpVariantImplemented": true,
   "httpVariantMeasured": false,
-  "independentAcceptance": "HTTP 8/8 and static 2640 pages reported passed; final publication boundary pending",
-  "httpsFetchVerified": false,
-  "deploymentEnabled": false,
-  "httpsPublished": false,
-  "livePublicationGetExecuted": false,
+  "independentAcceptance": "HTTP 8/8, static 2640 pages and initial publication boundary accepted",
+  "httpsFetchVerified": true,
+  "deploymentEnabled": true,
+  "httpsPublished": true,
+  "livePublicationGetExecuted": true,
   "httpVariantLlmMeasured": false,
-  "independentAcceptanceCompleted": false,
+  "independentAcceptanceCompleted": true,
   "independentPartialAcceptance": {
     "source": "reported by separate independent reviewer",
     "httpPassed": 8,
     "httpTotal": 8,
     "staticPagesValidated": 2640,
-    "finalPublicationBoundary": "pending"
-  }
+    "finalPublicationBoundary": "accepted for initial publication; status-only followup pending review"
+  },
+  "initialPublicationCommitSha": "a5d562ac59ddac2b6d4e3207cf877d472cbfec40",
+  "initialIndependentAcceptanceCompleted": true,
+  "independentStatusUpdateAcceptanceCompleted": false,
+  "statusOnlyFollowup": "pending independent review; not committed or pushed"
 }

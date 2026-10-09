@@ -9,39 +9,39 @@
       "oldDirectory": "conditions/A",
       "newDirectory": "conditions/1-no-kdoc",
       "publishedFileCount": 67,
-      "contentAndModeTreeSha256": "054987a4d9a307cc234488a82342e4013898fc1b8f8938593771ba59a5ddafae",
+      "contentAndModeTreeSha256": "d784c9891df6bee7b3b988993b7f6a047d46b25a2b371ffcb41c4375c969a878",
       "bytesChanged": false
     },
     {
       "oldDirectory": "conditions/number2",
       "newDirectory": "conditions/2-simple-kdoc",
       "publishedFileCount": 67,
-      "contentAndModeTreeSha256": "4968314951ce8645c089c767a937caf9b324a8e47053114414d0350866143910",
+      "contentAndModeTreeSha256": "8b3c6746991032573703e743d37252d85d723de062520caf0b5e4b7b2716090d",
       "bytesChanged": false
     },
     {
       "oldDirectory": "conditions/number3",
       "newDirectory": "conditions/3-concise-contract-kdoc",
       "publishedFileCount": 67,
-      "contentAndModeTreeSha256": "97b34a5349ae23150455ea005df3600aba3c9919711cdcd77f9f446f40201e0d",
+      "contentAndModeTreeSha256": "6ba86f5630b2d9a7ab7a423899b7ce7a498b856d14ad830da098eb3e2d792caf",
       "bytesChanged": false
     },
     {
       "oldDirectory": "conditions/E",
       "newDirectory": "conditions/4-detailed-contract-kdoc",
       "publishedFileCount": 67,
-      "contentAndModeTreeSha256": "38f007388443e97298e65a7e90dac5059f8a853847ea9aa1463c553ac7f88f8c",
+      "contentAndModeTreeSha256": "6664be12372313bd9b361bd1d228e86b5c00bec4ca067e573babd4b6358d580a",
       "bytesChanged": false
     },
     {
       "oldDirectory": "conditions/number5",
       "newDirectory": "conditions/5-contract-with-rationale-kdoc",
       "publishedFileCount": 67,
-      "contentAndModeTreeSha256": "4cf9529ecb644515307a99b81131c7a99372cb2e93d2f10a19a6208f911585ab",
+      "contentAndModeTreeSha256": "296d42d08cdb7b08cd2a9fd46d6e29a0d8c60d65b1da6b04959419bee6fba1d3",
       "bytesChanged": false
     }
   ],
-  "treeHashAlgorithm": "SHA-256 of UTF-8 JSON array sorted by relative path; entries have path, sha256, bytes, mode; JSON uses sorted keys, compact separators and ensure_ascii=false.",
+  "treeHashAlgorithm": "SHA-256 of a UTF-8 JSON array of files sorted by POSIX path relative to the condition directory. Each entry has path (string), sha256 (SHA-256 of committed Git blob bytes), bytes (integer blob length), and mode (six-digit Git tree mode string from git ls-tree: \"100644\" or \"100755\"). Serialize with sorted keys, compact separators (\",\", \":\"), ensure_ascii=false, and no trailing newline. Filesystem permissions and checkout umask are not inputs. The baseline and renamed Git trees yield the same digest.",
   "preservation": {
     "conditionFiles": 335,
     "conditionContentsAndModesUnchanged": true,

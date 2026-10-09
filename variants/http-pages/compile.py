@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Compile this variant with already installed Kotlin and existing dependency JARs.
 
-No dependencies are downloaded. Shared A/E source files are only read.
+No dependencies are downloaded. Shared detailed-contract condition source files are only read.
 Independent test authors can compile their own tests against build/classes.
 """
 
@@ -13,7 +13,7 @@ import subprocess
 
 VARIANT = Path(__file__).resolve().parent
 ROOT = VARIANT.parent.parent
-SHARED = ROOT / "conditions/E/app/src/main/java/com/example/kdoctest"
+SHARED = ROOT / "conditions/4-detailed-contract-kdoc/app/src/main/java/com/example/kdoctest"
 SHARED_FILES = [
     "domain/model/Product.kt", "domain/repository/ProductRepository.kt",
     "domain/usecase/LoadCatalogPage.kt", "data/dto/ProductDto.kt",

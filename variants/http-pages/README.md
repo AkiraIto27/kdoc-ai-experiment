@@ -1,6 +1,6 @@
 # Pages HTTP版（実装済み・未計測）
 
-このディレクトリに独立したHTTPアダプターを実装しています。`conditions/A`と`conditions/E`には手を加えていません。実測初期ソースにも実測結果にも、このHTTP版は含まれません。PagesでHTTPS公開し、このアダプターで公開URLから既定50件を取得しました。依存追加、Android組み込み、新たなLLM計測は行っていません。
+このディレクトリに独立したHTTPアダプターを実装しています。[KDoc追加なし](../../conditions/1-no-kdoc/)と[詳細な契約KDoc](../../conditions/4-detailed-contract-kdoc/)の初期ソースを保持しています。条件の旧名と改名前commitは[ルートREADME](../../README.md)を参照してください。実測初期ソースにも実測結果にも、このHTTP版は含まれません。PagesでHTTPS公開し、このアダプターで公開URLから既定50件を取得しました。依存追加、Android組み込み、新たなLLM計測は行っていません。
 
 公開API・例外仕様は[API.md](API.md)、実装は`src/main/kotlin/com/example/kdoctest/data/pages/`にあります。独立テスト担当は`CatalogHttpTransport`へ別実装を注入できます。
 
@@ -41,13 +41,15 @@ manifestは固定fixture版hashを検証し、索引とページbodyは公開man
 
 生成JSONをmainブランチの`/docs`から配信する案です。データは全架空で認証・キーは不要です。自動deploy workflowは追加していません。公開siteは[GitHub Pagesの1GB上限](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)以下に収める必要があります。実測fixtureは約1.28MBで、全limitの事前生成は商品bodyが約100回現れるため、約128MBに索引を加えた規模になります。正確なサイズは`publication/pages-build.json`に記録します。
 
-元500件JSONは`docs/data/catalog-v1/products.json`、生成器は`scripts/build_pages_data.py`として公開候補に含まれています。各A/Eアセットもbyte一致で保持します。公開データ版のhashは`5102e643ca1beaedaf98535f893fd5c0d874e013d0acfc51ab98e3f5740c378d`です。
+元500件JSONは`docs/data/catalog-v1/products.json`、生成器は`scripts/build_pages_data.py`として公開候補に含まれています。`1-no-kdoc`と`4-detailed-contract-kdoc`のアセットもbyte一致で保持します。公開データ版のhashは`5102e643ca1beaedaf98535f893fd5c0d874e013d0acfc51ab98e3f5740c378d`です。
 
 リポジトリの作成、push、Pages有効化、deploy完了、公開URLへのlive GETを確認しました。別thread/contextの独立HTTP受入8/8・静的2640ページ・初回公開対象確認も成功しています。実装担当は機能テストを作成せず、依頼された最小live取得smokeだけを実行しました。Androidへの組み込みと新たなLLM計測は未実施です。
 
+`src/main/kotlin/com/example/kdoctest/data/pages`はHTTP版の実装本体です。`CatalogHttpTransport.kt`がHTTP GETと取消、`PagesProductRepository.kt`が公開データの取得とhash・ページ整合性を扱います。`implementation-verification.json`は実装・公開時の記録として、旧パスと当時のhashを原文保存しています。改名後の参照はルートREADMEの対応表で読み替えてください。HTTP版の追加LLM実験は保留中です。
+
 ## 既存ツールでのコンパイル
 
-`compile.py`はA/Eの共有ソースを読み取るだけで、出力をこのvariantの`build/classes`に置きます。Kotlin compiler、serialization compiler plugin、coroutines-core-jvm 1.10.2、serialization-json/core-jvm 1.9.0の既存JARを引数で指定します。依存解決・download・Gradle daemon起動は行いません。
+`compile.py`は`conditions/4-detailed-contract-kdoc`の共通8ソースと、このvariantの2ソースを読み取り、出力をこのvariantの`build/classes`に置きます。Kotlin compiler、serialization compiler plugin、coroutines-core-jvm 1.10.2、serialization-json/core-jvm 1.9.0の既存JARを引数で指定します。依存解決・download・Gradle daemon起動は行いません。
 
 ```text
 python3 -B variants/http-pages/compile.py \
@@ -56,7 +58,7 @@ python3 -B variants/http-pages/compile.py \
   --classpath <existing-coroutines-and-serialization-jars>
 ```
 
-今回の確認はKotlin 2.3.10/JDK 25.0.2、JVM target 11のコンパイルのみです。アプリのGradle設定はKotlin 2.2.10のままで、Androidビルド互換性まで確認したとは扱いません。
+実装時のコンパイル確認はKotlin 2.3.10/JDK 25.0.2、JVM target 11です。アプリのGradle設定はKotlin 2.2.10のままで、Androidビルド互換性まで確認したとは扱いません。
 
 ## 支払い不要の構成
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare static catalog pages from the unchanged measured A/E fixture.
+"""Prepare static catalog pages from the unchanged measured no-KDoc/detailed-contract fixture.
 
 This generates publication assets; it does not modify either measured condition.
 Only Python's standard library is required. It never enables or deploys Pages.
@@ -31,11 +31,11 @@ def encode(value):
 
 
 def main():
-    a = (ROOT / "conditions/A" / ASSET).read_bytes()
-    e = (ROOT / "conditions/E" / ASSET).read_bytes()
-    if a != e:
-        raise ValueError("Measured A/E fixture bytes differ")
-    source = json.loads(a)
+    no_kdoc_fixture = (ROOT / "conditions/1-no-kdoc" / ASSET).read_bytes()
+    detailed_contract_fixture = (ROOT / "conditions/4-detailed-contract-kdoc" / ASSET).read_bytes()
+    if no_kdoc_fixture != detailed_contract_fixture:
+        raise ValueError("Measured no-KDoc/detailed-contract fixture bytes differ")
+    source = json.loads(no_kdoc_fixture)
     snapshot_id = source["snapshotId"]
     items = source["items"]
     if snapshot_id != "catalog-v1" or len(items) != 500:
@@ -59,7 +59,7 @@ def main():
         files[relative] = {"sha256": digest(data), "bytes": len(data)}
 
     # Full snapshot preserves the measured fixture's bytes and original ID order.
-    write("products.json", a)
+    write("products.json", no_kdoc_fixture)
     write("empty.json", encode({"snapshotId": snapshot_id, "items": [],
                                 "pageInfo": {"nextCursor": None, "totalCount": 0}}))
     limit_indexes = {}
@@ -93,7 +93,7 @@ def main():
     manifest = {
         "formatVersion": 1, "snapshotId": snapshot_id, "defaultLimit": 50,
         "minimumLimit": 1, "maximumLimit": 100, "totalCount": len(ordered),
-        "sourceFixture": {"file": "products.json", "sha256": digest(a), "bytes": len(a)},
+        "sourceFixture": {"file": "products.json", "sha256": digest(no_kdoc_fixture), "bytes": len(no_kdoc_fixture)},
         "ordering": ["updatedAt descending (Instant)", "id ascending"],
         "cursorAlgorithm": "SHA-256 UTF-8 catalog-cursor-v1|snapshotId|limit|offset",
         "normal": {"limitIndexes": limit_indexes, "pageCount": page_count},
@@ -107,7 +107,7 @@ def main():
     if path.exists() and path.read_bytes() != data:
         raise ValueError("Existing manifest differs")
     path.write_bytes(data)
-    print(json.dumps({"snapshotId": snapshot_id, "sourceSha256": digest(a),
+    print(json.dumps({"snapshotId": snapshot_id, "sourceSha256": digest(no_kdoc_fixture),
                       "normalPages": page_count, "files": len(files) + 1,
                       "bytes": sum(value["bytes"] for value in files.values()) + len(data),
                       "httpVariantMeasured": False}, separators=(",", ":")))

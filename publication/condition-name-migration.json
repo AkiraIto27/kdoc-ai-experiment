@@ -1,0 +1,64 @@
+{
+  "formatVersion": 1,
+  "change": "Descriptive names for the five published KDoc condition directories",
+  "baselinePublicCommit": "e68aec4a803e1d0a5258a07198d1b77fad7808e2",
+  "initialAePublicationCommit": "a5d562ac59ddac2b6d4e3207cf877d472cbfec40",
+  "number235PublicationCommit": "e68aec4a803e1d0a5258a07198d1b77fad7808e2",
+  "conditions": [
+    {
+      "oldDirectory": "conditions/A",
+      "newDirectory": "conditions/1-no-kdoc",
+      "publishedFileCount": 67,
+      "contentAndModeTreeSha256": "054987a4d9a307cc234488a82342e4013898fc1b8f8938593771ba59a5ddafae",
+      "bytesChanged": false
+    },
+    {
+      "oldDirectory": "conditions/number2",
+      "newDirectory": "conditions/2-simple-kdoc",
+      "publishedFileCount": 67,
+      "contentAndModeTreeSha256": "4968314951ce8645c089c767a937caf9b324a8e47053114414d0350866143910",
+      "bytesChanged": false
+    },
+    {
+      "oldDirectory": "conditions/number3",
+      "newDirectory": "conditions/3-concise-contract-kdoc",
+      "publishedFileCount": 67,
+      "contentAndModeTreeSha256": "97b34a5349ae23150455ea005df3600aba3c9919711cdcd77f9f446f40201e0d",
+      "bytesChanged": false
+    },
+    {
+      "oldDirectory": "conditions/E",
+      "newDirectory": "conditions/4-detailed-contract-kdoc",
+      "publishedFileCount": 67,
+      "contentAndModeTreeSha256": "38f007388443e97298e65a7e90dac5059f8a853847ea9aa1463c553ac7f88f8c",
+      "bytesChanged": false
+    },
+    {
+      "oldDirectory": "conditions/number5",
+      "newDirectory": "conditions/5-contract-with-rationale-kdoc",
+      "publishedFileCount": 67,
+      "contentAndModeTreeSha256": "4cf9529ecb644515307a99b81131c7a99372cb2e93d2f10a19a6208f911585ab",
+      "bytesChanged": false
+    }
+  ],
+  "treeHashAlgorithm": "SHA-256 of UTF-8 JSON array sorted by relative path; entries have path, sha256, bytes, mode; JSON uses sorted keys, compact separators and ensure_ascii=false.",
+  "preservation": {
+    "conditionFiles": 335,
+    "conditionContentsAndModesUnchanged": true,
+    "existingPublicationRecordsUnchanged": true,
+    "httpImplementationVerificationRecordUnchanged": true,
+    "httpKotlinImplementationUnchanged": true,
+    "measurementRecordsAndOriginalOutputsUnchanged": true
+  },
+  "currentPublicationInventory": {
+    "file": ".publication-allowlist",
+    "fileCount": 3107,
+    "previousInventoryFileCount": 2897,
+    "previouslyPublishedFilesRestoredToInventory": 209,
+    "newFiles": [
+      "publication/condition-name-migration.json"
+    ]
+  },
+  "historicalPaths": "Existing publication manifests, diffs and implementation-verification.json retain their original paths and hashes. Resolve them at baselinePublicCommit or apply the directory mapping above.",
+  "httpExperiment": "Additional HTTP LLM experiments remain on hold; none were run for this rename."
+}

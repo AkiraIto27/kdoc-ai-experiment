@@ -3175,8 +3175,6 @@ conditions/6-used-androidx-skill-kdoc/settings.gradle.kts
 docs/results/README.md
 docs/results/all600-trials.csv
 docs/results/condition6-100-trials.csv
-docs/results/kdoc-six-conditions-600-retry-history.csv
-docs/results/kdoc-six-conditions-600-retry-history.json
 docs/results/kdoc-six-conditions-600.html
 docs/results/kdoc-six-conditions-600.json
 publication/condition6-600/ANDROIDX-LICENSE.txt

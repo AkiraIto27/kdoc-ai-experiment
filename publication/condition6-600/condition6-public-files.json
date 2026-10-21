@@ -1,0 +1,343 @@
+{
+  "condition": 6,
+  "file_count": 67,
+  "files": [
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/.gitignore",
+      "sha256": "378a9a5ca7012d6f0140ac5b7d19583c3d00ff89f9f74b6c04b3c823f7eb5c0b",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/README.md",
+      "sha256": "0dc723d39ba71c2fbe3eb403d206975ff9cb64a482f61f926801e7ce2a98e0a8",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/.gitignore",
+      "sha256": "5c3174b74edc6f2b9e0743594b8bd3c7f31e4f4405758cc9872b3fe1de1d28b4",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/build.gradle.kts",
+      "sha256": "3d681928fd0823c200ed5d94c12aa448ce0686bebe4ee3940954cb8c9f7eeead",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/androidTest/java/com/example/kdoctest/CatalogFlowTest.kt",
+      "sha256": "2f202fd6d40222a2715d8616fe93ac7dd4fdc3635948ef91069d6b6dea746608",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/androidTest/java/com/example/kdoctest/ExampleInstrumentedTest.kt",
+      "sha256": "795307c3072a5d92701ee331fd7d60cd642df6b43b3e4308c1855a513c35a2ec",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/AndroidManifest.xml",
+      "sha256": "46e28d4ef25af6fa2e3e76be62af33177db728b41fe67f5d96eb4491a8f6b12a",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/assets/catalog/products.json",
+      "sha256": "5102e643ca1beaedaf98535f893fd5c0d874e013d0acfc51ab98e3f5740c378d",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/MainActivity.kt",
+      "sha256": "7081fc905c721b82ad29b5db26da19d2b62030f2c50b2515e576af6ffa724279",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/data/dto/ProductDto.kt",
+      "sha256": "862505f6259e1dcc74b8fed812a8f7e9207d56481cafa9b3a0f02b40b5f37de3",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/data/dto/ProductMapper.kt",
+      "sha256": "bc1ff367b697323812f621ed75867befb45efc47ad5e83bdb9624f5094bb9750",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/data/remote/CatalogCursor.kt",
+      "sha256": "558f3e5b9c61c605257f91c14271f30d387c14dad466d4c559af3e96dd517f8e",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/data/remote/CatalogJson.kt",
+      "sha256": "c762543557ff79dd5d52c374ffa8431a25768f98be366f5123f8a1355e3c1138",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/data/remote/CatalogMockEngine.kt",
+      "sha256": "948a6ee3130e9aca2d4f13dbac5b679020fc87058d43a849ffc136aba9483e87",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/data/remote/CatalogScenario.kt",
+      "sha256": "5ec55b6136c756fd9cf8cda724581bb2645641092139b79b35228f63847c351f",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt",
+      "sha256": "e700e47301aabbf4ec74b96da9856eefb1eb4ae89e6e16d9a981bf84915c8915",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/di/CatalogViewModelFactory.kt",
+      "sha256": "5d371856809f8d604faf165663ad7f9d0a6cc055e9173c43d1a9dfa02e25dec9",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/domain/model/Product.kt",
+      "sha256": "b7ee6317bb6aa94c7923b7e486011cf7af944f00908ab20ed8e8da2d9e6bfe04",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "sha256": "bfb62055f45dc5342bcdd67810cac6ed9ca68f81a188d7397ef01a471f9b8496",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt",
+      "sha256": "94ab1004a98d0b7f219531b694646575ee5a39dc25a0b3abe8d6f6139d4f0fbe",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogScreen.kt",
+      "sha256": "78c15cf97061141c134b336de195cff41ef24d21eb335196826dea4bb6243049",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogUiState.kt",
+      "sha256": "5dd4e6743619183328e8a013b53397ffeb842a5d4731fd10963923f9aa7fdb63",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "sha256": "e8e52cd0b0393c79cbf49afc23eb85bece3cfe32e9abeb56af36e52af91fe9f3",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/presentation/catalog/ProductFormatter.kt",
+      "sha256": "d371b31c5b3843da369578e3924ccd982a554291cbfb5032b5b2cc347b7e7f39",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/ui/theme/Color.kt",
+      "sha256": "7e693ee65279472f8f2d2fc37a66c1ee32cdfda1643d54d0a995fafa5358dd48",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/ui/theme/Theme.kt",
+      "sha256": "9dda1c234094b60b912b672df4a27fcecc59d30215700955cbe5c28f5f3b53d9",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/java/com/example/kdoctest/ui/theme/Type.kt",
+      "sha256": "036084d011f98d859044b0de31d87a06cd2930d271c4481ceb42e029b8e887b8",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/keepRules/rules.keep",
+      "sha256": "cd9f36ade2d8604e1b7cf24eff5b171f9c0816c0aa013ba7eb55be4fe2e1dac7",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/drawable/ic_launcher_background.xml",
+      "sha256": "ed423c73a6f40a4d2909f0901e60527b3a807cd59e1b5593bcaae1808b1c6321",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/drawable/ic_launcher_foreground.xml",
+      "sha256": "01d1a6a6c1234eb7fe270d097eb283d72b9c95ae5118886f1b6573aad280f1f7",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-anydpi/ic_launcher.xml",
+      "sha256": "88f7653499ef524126ea5018a99baf9cc3269e7e584d6205dfdd76db39f39cc0",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml",
+      "sha256": "88f7653499ef524126ea5018a99baf9cc3269e7e584d6205dfdd76db39f39cc0",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-hdpi/ic_launcher.webp",
+      "sha256": "dd00996198640ed28fbc09cdcd7a3807cf8707f3eb255b659634da3ca6a6ff01",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp",
+      "sha256": "1ed73f5341a69d3b41c7e02e126803f50cc8c3284adf4bbb737f0c93577aef07",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-mdpi/ic_launcher.webp",
+      "sha256": "846219e6f72fe9a6c104ca8919cbee36a101e7d2ff8da9da67b689a5888f060d",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp",
+      "sha256": "4e2c58b91de01130e6479e00cbbaaf6e77cd961dd2c8e303cf13cd077fa92632",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-xhdpi/ic_launcher.webp",
+      "sha256": "398340dad816fc9a6338cb151a8cf1e45b926f9bfb70628b24c4bd2523cc94d4",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp",
+      "sha256": "91b490aef86574901137f0a252272e1f1add99c1ad709e0696ed68929b88d261",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp",
+      "sha256": "58ae87fa0c5b5d1562d27fd648d2c061553fe20e3ed570bde588162d01ea7a27",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp",
+      "sha256": "3009fad079f5772f30ecd767f98924367fbe0f81c30048d672d4fda2d5ca7d12",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
+      "sha256": "f98fef5bc3bfe5b65692c40ad1cbae2bec4faf9f1b249c397626740db71b62d8",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp",
+      "sha256": "5faf033745c8c882c43bb1b372d4e4a5890caec63d9892a2e756c954108b85dc",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/values/colors.xml",
+      "sha256": "b5626527d503417f0d8e5b1e08f338de7b31173bf0e122815f03e64932adbd88",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/values/strings.xml",
+      "sha256": "3a70aba19e9c05ff59fd0b641442871fd880d909dc9537ece8b573dc201d4128",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/values/themes.xml",
+      "sha256": "a154b5977cd611e9a7eec10efdb0370c13311d570e63cd710f9277fbe1e90209",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/xml/backup_rules.xml",
+      "sha256": "6cf1a27e6807b1d24e41d3fbe7ddc1bfe1f42226027964f6eaf477d71b43b283",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "cb1fc47ab4a984530ed60e0e6ee638929c3038290e7e7e0b4b03a3a30fbe7381",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/test/java/com/example/kdoctest/ExampleUnitTest.kt",
+      "sha256": "338be01f3acb0683e8e17117e3ca57f8a103329c3b2a4dab5df9d2c688379871",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/test/java/com/example/kdoctest/data/CatalogFailureTest.kt",
+      "sha256": "8d5a61c1215971472a8bb4dabec48b43f34bb6e0821fad0042c2a62ffffeceb1",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/test/java/com/example/kdoctest/data/CatalogMappingTest.kt",
+      "sha256": "b48b439b04df7e98fb4a70cb97faed067b4de9676e2b6d4611af3f5c46837eaf",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/test/java/com/example/kdoctest/data/CatalogPaginationTest.kt",
+      "sha256": "c0eff3fe64dd97e54578ff42ba09010404d9eb86d158eabafbe17db9fad2516a",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/test/java/com/example/kdoctest/data/CatalogTestSupport.kt",
+      "sha256": "b71a2b680f338b5a04685227173723939380d76bdefffb81208bfb930d7f7736",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/test/java/com/example/kdoctest/domain/LoadCatalogPageTest.kt",
+      "sha256": "33a9832e69dd1cf8f01da8809d006021643a67e4b4a0a5e6d9e85b4ec7083f31",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/test/java/com/example/kdoctest/presentation/catalog/CatalogViewModelTest.kt",
+      "sha256": "d9b7ec0a0f527c272c9b825818f50e2f6b132857b6d2ea95473cb0cc751da708",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/app/src/test/java/com/example/kdoctest/presentation/catalog/ProductFormatterTest.kt",
+      "sha256": "938e2aefc96e268644bc2aa966374c675e37e56270e47c6a37ba220d68ff4b0f",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/build.gradle.kts",
+      "sha256": "6854710f5ae05a16c85835fd32e937c4ca69bbf6ddefb7483a81a63c54b75244",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/docs/adr/0001-catalog-baseline.md",
+      "sha256": "9f15ae068bcb8520a5d132d384e5d2e795988226dc0a83652cdabdbe4b2a6010",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/docs/verification.md",
+      "sha256": "626a12a36f1353d243dbe816a57fda9258a8cae51b713adfb7b6fab30c5b7d1a",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/gradle.properties",
+      "sha256": "cf774135f23cd1e6c054168ce772e24140800347f95b29819744c96f97e4ef26",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/gradle/gradle-daemon-jvm.properties",
+      "sha256": "6c13aa5ba36690ccfbbb25a8807d01d98c15833e446d7ae82ddc726472cb8ef7",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/gradle/libs.versions.toml",
+      "sha256": "44de2916bcd439b9cada302323b1bf2825fc03be8d1a2e93c26ff99c2f34af4c",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "76805e32c009c0cf0dd5d206bddc9fb22ea42e84db904b764f3047de095493f3",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "645df5d4cd156c9a1cf4966e0f4c03bb0889b058ea571f79836b6b1e0c05785c",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/gradlew",
+      "sha256": "3238afb2aed5cb16eb7d6718077e7138059108f007b54179e9cc157c5a6e0e89",
+      "mode": "0o744"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/gradlew.bat",
+      "sha256": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/scripts/generate_catalog.py",
+      "sha256": "c908857967bcbf4a9b73f49b60c6bb7cfdc84862bb7ce0e5d625c55e42ff5b11",
+      "mode": "0o644"
+    },
+    {
+      "path": "conditions/6-used-androidx-skill-kdoc/settings.gradle.kts",
+      "sha256": "7c75402a4396ddf5570bcbd58c8be2abe739ee7b8215b0bb6232b214f6e6a809",
+      "mode": "0o644"
+    }
+  ],
+  "omitted_from_frozen_measurement_copy": "Six local .tools test helpers/JARs, matching the public subset of conditions 1–5. No application source is omitted.",
+  "frozen_full_manifest_sha256": "7f99edfbd48803ec143920529067ccc64c6faf6b67fd6f2e3b194bd38f922ba2"
+}

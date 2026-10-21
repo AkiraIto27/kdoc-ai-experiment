@@ -1,0 +1,76 @@
+{
+  "base_condition": 1,
+  "generation_model": "gpt-6.1-sol",
+  "reasoning_effort": "xhigh",
+  "CLI_version": "codex-cli 0.162.0-alpha.2",
+  "started_at_utc": "2026-10-21T02:34:21.560446+00:00",
+  "generation_seconds_excluded_from_trials": 309.1153378329982,
+  "generation_usage": {
+    "input_tokens": 27358,
+    "output_tokens": 12717,
+    "cached_input_tokens": 0,
+    "reasoning_output_tokens": 9762,
+    "total_tokens": 40075
+  },
+  "monetary_cost": null,
+  "monetary_cost_note": "CLI did not report a currency amount; no additional purchase.",
+  "generation_prompt_sha256": "66eff06f60ba8b3c68a30deda629749c84a443b1c2ffd97916ea00d1d23fe1af",
+  "generation_prompt_description": "Read the complete pinned AndroidX guide, condition 1 common initial code, the existing 18-site/87-item contract reference, and common README/ADR. Return KDoc for exactly those 18 sites in Japanese. Preserve implementation and documented contracts; do not invent guarantees.",
+  "language": "Japanese",
+  "English_rules_adaptation": "Use a short active Japanese summary. The English fewer-than-15-words and lowercase tag-description rules are not applied literally to Japanese. Preserve Kotlin links and supported examples.",
+  "skill": {
+    "repository": "androidx/androidx",
+    "commit": "40f3b4aeb30d2fec462088ea9f65f662baa2dcf4",
+    "path": ".agents/skills/ktdoc_quality/SKILL.md",
+    "sha256": "115dfe60fb5f947e7e7584e85c071aa39ec48fc88f0b0ec6063dab7da1213aa2",
+    "bytes": 8065,
+    "companion_files": 0,
+    "used_during": "KDoc generation only; absent from measured copies and implementation-AI runtime instructions",
+    "source_url": "https://github.com/androidx/androidx/blob/40f3b4aeb30d2fec462088ea9f65f662baa2dcf4/.agents/skills/ktdoc_quality/SKILL.md"
+  },
+  "changes": [
+    {
+      "file": "app/src/main/java/com/example/kdoctest/MainActivity.kt",
+      "kdoc_blocks": 2,
+      "before_sha256": "4723565736310056b432e71a3190765e2e88528cfc3c6c116a83f3eba8680a05",
+      "after_sha256": "7081fc905c721b82ad29b5db26da19d2b62030f2c50b2515e576af6ffa724279"
+    },
+    {
+      "file": "app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt",
+      "kdoc_blocks": 2,
+      "before_sha256": "146a546fc0bf0e56b1410bf9eaf25b9826344e9d0184a6a919d5d3d69ad8293f",
+      "after_sha256": "e700e47301aabbf4ec74b96da9856eefb1eb4ae89e6e16d9a981bf84915c8915"
+    },
+    {
+      "file": "app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt",
+      "kdoc_blocks": 6,
+      "before_sha256": "6f0c45677653ed498fb72f1cec98aab558fad6723634f0be29f1276339780e47",
+      "after_sha256": "bfb62055f45dc5342bcdd67810cac6ed9ca68f81a188d7397ef01a471f9b8496"
+    },
+    {
+      "file": "app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt",
+      "kdoc_blocks": 2,
+      "before_sha256": "87588f8a59b07ec003e6bb7a6ebf13e45f2cb45553db691fa47a5e3d5d14a924",
+      "after_sha256": "94ab1004a98d0b7f219531b694646575ee5a39dc25a0b3abe8d6f6139d4f0fbe"
+    },
+    {
+      "file": "app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt",
+      "kdoc_blocks": 6,
+      "before_sha256": "cb75928d8d6afe55e6f665e34298f622ae35c2a1f63ab6654dfa74f1fb130a11",
+      "after_sha256": "e8e52cd0b0393c79cbf49afc23eb85bece3cfe32e9abeb56af36e52af91fe9f3"
+    }
+  ],
+  "KDoc_sites": 18,
+  "reference_contract_items": 87,
+  "implementation_tests_and_regular_docs_changed": false,
+  "static_independent_audit": {
+    "contract_items_preserved": 87,
+    "sites": 18,
+    "link_example_checks": 37,
+    "passed": true,
+    "audit_sha256": "57c2aaea2c9cff8a73e4e8b8aea48255d07ec947053a2fb52406f6a256e29365",
+    "limitation": "Static validation; no Dokka or full Android build claimed."
+  },
+  "generated_output_sha256": "c4a499f57177f6930119aad9ce02d2c9845f03c2b4f76c3d8ba11770191e86b0",
+  "frozen_full_manifest_sha256": "7f99edfbd48803ec143920529067ccc64c6faf6b67fd6f2e3b194bd38f922ba2"
+}

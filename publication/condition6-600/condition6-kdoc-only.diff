@@ -1,0 +1,324 @@
+--- a/app/src/main/java/com/example/kdoctest/MainActivity.kt
++++ b/app/src/main/java/com/example/kdoctest/MainActivity.kt
+@@ -11,6 +11,19 @@
+ import com.example.kdoctest.presentation.catalog.CatalogViewModel
+ import com.example.kdoctest.ui.theme.KDocTestTheme
+ 
++/**
++ * テーマ付きの商品一覧画面を表示する。
++ *
++ * ```kotlin
++ * val intent = android.content.Intent(context, MainActivity::class.java)
++ * intent.putExtra("catalog_scenario", "empty")
++ * context.startActivity(intent)
++ * ```
++ *
++ * - 商品一覧の[CatalogViewModel]を[MainActivity]に紐づけ、[KDocTestTheme]内で[CatalogRoute]を表示する
++ * - デバッグビルドでは[android.content.Intent]の`catalog_scenario`でシナリオを選ぶ。`empty`は空一覧、`error`は取得失敗、`next-page-error`は追加取得失敗
++ * - 未指定・未知の値、およびデバッグ以外のビルドでは通常シナリオを使う
++ */
+ class MainActivity : ComponentActivity() {
+     private val catalogViewModel: CatalogViewModel by viewModels {
+         val scenario = if (BuildConfig.DEBUG) {
+@@ -26,6 +39,20 @@
+         CatalogViewModelFactory(applicationContext, scenario)
+     }
+ 
++    /**
++     * 商品一覧のCompose画面を構成する。
++     *
++     * ```kotlin
++     * // フレームワークが onCreate(savedInstanceState) を呼ぶ
++     * // super.onCreate(savedInstanceState) → enableEdgeToEdge()
++     * // setContent → KDocTestTheme → CatalogRoute(catalogViewModel)
++     * ```
++     *
++     * - [ComponentActivity.onCreate]による初期化後、[enableEdgeToEdge]でエッジツーエッジ表示を有効にする
++     * - [setContent]で[KDocTestTheme]と商品一覧の[CatalogRoute]を構成する
++     *
++     * @param savedInstanceState フレームワークが渡す復元用の[Bundle]。復元する状態がなければ`null`
++     */
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         enableEdgeToEdge()
+--- a/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt
++++ b/app/src/main/java/com/example/kdoctest/data/repository/HttpProductRepository.kt
+@@ -13,7 +13,38 @@
+ import io.ktor.http.HttpStatusCode
+ import kotlinx.coroutines.CancellationException
+ 
++/**
++ * 商品ページをHTTPで取得してドメインモデルへ変換する。
++ *
++ * ```kotlin
++ * val repository = HttpProductRepository(client)
++ * val page = repository.getProducts(cursor = null, limit = 50)
++ * ```
++ *
++ * - 注入された[client]で商品ページを取得し、JSONを[ProductPage]へ変換する
++ *
++ * @param client 取得用の[HttpClient]。生成・終了は呼び出し側が管理する
++ */
+ class HttpProductRepository(private val client: HttpClient) : ProductRepository {
++    /**
++     * 指定した商品ページをHTTPで取得する。
++     *
++     * ```kotlin
++     * val first = repository.getProducts(cursor = null, limit = 50)
++     * val next = first.nextCursor?.let { repository.getProducts(cursor = it, limit = 50) }
++     * ```
++     *
++     * - `GET https://catalog.example.test/v1/products`へ要求する
++     * - 本文をUTF-8・JSONとして読み、ページ条件を検証して[ProductPage]へ変換する
++     *
++     * @param cursor 前回返された[ProductPage.nextCursor]。`null`ならクエリに含めず、先頭ページを要求する
++     * @param limit 取得件数の上限（`1..100`件）。範囲外ではHTTP要求を行わない
++     * @return 商品一覧・次カーソル・全件数・スナップショットID・本文サイズ（バイト）を持つ[ProductPage]。一覧が空の場合もあり、[ProductPage.nextCursor]が`null`なら次ページなし
++     * @throws CatalogException.InvalidRequest [limit]が範囲外、またはHTTP 400の場合
++     * @throws CatalogException.Unavailable 要求処理・応答本文の取得に失敗した場合、またはHTTP 400以外の非2xxの場合
++     * @throws CatalogException.InvalidResponse 本文解釈・モデル変換・変換時の検証に失敗した場合
++     * @throws CancellationException 取得をキャンセルした場合。例外を変換せず再送出する
++     */
+     override suspend fun getProducts(cursor: String?, limit: Int): ProductPage {
+         if (limit !in 1..100) throw CatalogException.InvalidRequest("limit must be between 1 and 100")
+         val response = try {
+--- a/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt
++++ b/app/src/main/java/com/example/kdoctest/domain/repository/ProductRepository.kt
+@@ -2,12 +2,85 @@
+ 
+ import com.example.kdoctest.domain.model.ProductPage
+ 
++/**
++ * 商品一覧をカーソルでページ取得する契約を定める。
++ *
++ * ```kotlin
++ * val first = repository.getProducts()
++ * val next = first.nextCursor?.let { repository.getProducts(cursor = it) }
++ * ```
++ *
++ * - 次の取得には、返された[ProductPage.nextCursor]を[getProducts]へ渡す
++ */
+ interface ProductRepository {
++    /**
++     * 商品一覧を1ページ取得する。
++     *
++     * ```kotlin
++     * val first = repository.getProducts()
++     * val next = first.nextCursor?.let { repository.getProducts(cursor = it) }
++     * ```
++     *
++     * - 取得処理・例外の扱い・[limit]が範囲外の場合の検証方法は実装に従う
++     *
++     * @param cursor 前回返された[ProductPage.nextCursor]。`null`で先頭ページ
++     * @param limit 取得件数の上限（`1..100`件、既定50件）
++     * @return 商品一覧とページ情報を持つ[ProductPage]。一覧が空の場合もあり、[ProductPage.nextCursor]が`null`なら次ページなし
++     */
+     suspend fun getProducts(cursor: String? = null, limit: Int = 50): ProductPage
+ }
+ 
++/**
++ * 商品一覧の取得失敗を分類する。
++ *
++ * ```kotlin
++ * val failure: CatalogException = CatalogException.Unavailable()
++ * throw failure
++ * ```
++ *
++ * - [CatalogException.Unavailable]: 取得不能
++ * - [CatalogException.InvalidRequest]: 要求条件の不正
++ * - [CatalogException.InvalidResponse]: 応答データの不正
++ *
++ * @param message 失敗内容の説明
++ * @param cause 元の原因例外。なければ`null`（既定）
++ */
+ sealed class CatalogException(message: String, cause: Throwable? = null) : Exception(message, cause) {
++    /**
++     * 取得先の異常や取得失敗を示す。
++     *
++     * ```kotlin
++     * val failure = CatalogException.Unavailable(cause = null)
++     * throw failure
++     * ```
++     *
++     * - 要求処理や応答本文の取得の失敗を含む
++     *
++     * @param cause 元の原因例外。HTTPステータスによる失敗など、原因例外がなければ`null`（既定）
++     */
+     class Unavailable(cause: Throwable? = null) : CatalogException("商品を取得できませんでした。", cause)
++    /**
++     * ページ取得条件の不正を示す。
++     *
++     * ```kotlin
++     * val failure = CatalogException.InvalidRequest("取得件数が無効です")
++     * throw failure
++     * ```
++     *
++     * @param message 無効な取得条件の説明
++     */
+     class InvalidRequest(message: String) : CatalogException(message)
++    /**
++     * 受信商品データの読み取り失敗を示す。
++     *
++     * ```kotlin
++     * val failure = CatalogException.InvalidResponse(cause = null)
++     * throw failure
++     * ```
++     *
++     * - 受信商品データの解釈・モデル変換・検証の失敗を含む
++     *
++     * @param cause 元の原因例外。なければ`null`（既定）
++     */
+     class InvalidResponse(cause: Throwable? = null) : CatalogException("商品データを読み取れませんでした。", cause)
+ }
+--- a/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt
++++ b/app/src/main/java/com/example/kdoctest/domain/usecase/LoadCatalogPage.kt
+@@ -3,7 +3,35 @@
+ import com.example.kdoctest.domain.model.ProductPage
+ import com.example.kdoctest.domain.repository.ProductRepository
+ 
++/**
++ * 商品ページの取得を[repository]へ委ねる。
++ *
++ * ```kotlin
++ * val loadPage = LoadCatalogPage(repository)
++ * val page = loadPage()
++ * ```
++ *
++ * - [invoke]で取得件数の上限を検証してから、[ProductRepository.getProducts]へ取得を委ねる
++ *
++ * @param repository カーソルの解釈と商品ページ取得を担う[ProductRepository]
++ */
+ class LoadCatalogPage(private val repository: ProductRepository) {
++    /**
++     * 指定ページの取得結果を返す。
++     *
++     * ```kotlin
++     * val loadPage = LoadCatalogPage(repository)
++     * val page = loadPage(cursor = null, limit = 50)
++     * ```
++     *
++     * - [repository]の[ProductRepository.getProducts]が返す[ProductPage]をそのまま返す
++     * - 取得中の例外とキャンセルはそのまま呼び出し元へ伝える
++     *
++     * @param cursor 前回返された[ProductPage.nextCursor]。`null`で先頭ページ
++     * @param limit 取得件数の上限（`1..100`件、既定50件）
++     * @return 商品一覧とページ情報を持つ[ProductPage]。一覧が空の場合もあり、[ProductPage.nextCursor]が`null`なら次ページなし
++     * @throws IllegalArgumentException [limit]が`1..100`の範囲外の場合。この場合は[ProductRepository.getProducts]を呼ばない
++     */
+     suspend operator fun invoke(cursor: String? = null, limit: Int = 50): ProductPage {
+         require(limit in 1..100) { "limit must be between 1 and 100" }
+         return repository.getProducts(cursor, limit)
+--- a/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt
++++ b/app/src/main/java/com/example/kdoctest/presentation/catalog/CatalogViewModel.kt
+@@ -11,8 +11,35 @@
+ import kotlinx.coroutines.flow.asStateFlow
+ import kotlinx.coroutines.launch
+ 
++/**
++ * 商品ページを取得して画面の状態を更新する。
++ *
++ * ```kotlin
++ * val viewModel = CatalogViewModel(useCase)
++ * val states = viewModel.uiState
++ * ```
++ *
++ * - 商品一覧・読み込み状態・失敗メッセージを[uiState]へ反映する
++ * - 生成時に[refresh]で先頭ページの取得を開始する
++ * - 要求の世代が一致する成功・失敗だけを[uiState]へ反映する
++ * - 取得コルーチンのキャンセルはエラー表示へ変換せず再送出する
++ *
++ * @param useCase 各ページを取得する[LoadCatalogPage]。すべての取得で[PAGE_SIZE]を指定する
++ */
+ class CatalogViewModel(private val useCase: LoadCatalogPage) : ViewModel() {
+     private val mutableUiState = MutableStateFlow(CatalogUiState())
++    /**
++     * 一覧画面へ読み取り専用の[StateFlow]を公開する。
++     *
++     * ```kotlin
++     * val state = viewModel.uiState.value
++     * val hasMore = state.hasMore
++     * ```
++     *
++     * - 一覧画面が状態の変化を監視する
++     * - [CatalogUiState.initialError]・[CatalogUiState.refreshError]・[CatalogUiState.loadMoreError]の`null`は、その種別に表示対象のエラーがないことを示す
++     * - 取得成功時の[CatalogUiState.hasMore]は、次カーソルがあり、表示件数が取得した全件数より少ない場合に`true`になる
++     */
+     val uiState: StateFlow<CatalogUiState> = mutableUiState.asStateFlow()
+ 
+     private var nextCursor: String? = null
+@@ -23,6 +50,19 @@
+         refresh()
+     }
+ 
++    /**
++     * 先頭ページの非同期取得を開始する。
++     *
++     * ```kotlin
++     * viewModel.refresh()
++     * val state = viewModel.uiState.value
++     * ```
++     *
++     * - 進行中の取得をキャンセルし、[CatalogUiState.initialError]・[CatalogUiState.refreshError]・[CatalogUiState.loadMoreError]を消す
++     * - 取得中は既存商品を保持し、商品がなければ[CatalogUiState.isInitialLoading]、あれば[CatalogUiState.isRefreshing]を`true`にする
++     * - 成功時は商品一覧を取得結果で置き換える
++     * - 失敗時は商品とページ情報を保持し、商品がなければ[CatalogUiState.initialError]、あれば[CatalogUiState.refreshError]へメッセージを設定する
++     */
+     fun refresh() {
+         val generation = ++requestGeneration
+         requestJob?.cancel()
+@@ -38,6 +78,19 @@
+         loadPage(cursor = null, replace = true, generation = generation)
+     }
+ 
++    /**
++     * 次ページを非同期に取得して商品を追記する。
++     *
++     * ```kotlin
++     * viewModel.loadNextPage()
++     * val state = viewModel.uiState.value
++     * ```
++     *
++     * - 次カーソルで取得を開始し、成功した商品のみ既存一覧の末尾へ追記する
++     * - 次カーソルがない場合、いずれかの取得中（[CatalogUiState.isLoading]）、または[CatalogUiState.hasMore]が`false`の場合は何もしない
++     * - 開始時に[CatalogUiState.refreshError]と[CatalogUiState.loadMoreError]を消す
++     * - 失敗時は商品とページ情報を保持し、[CatalogUiState.loadMoreError]へメッセージを設定する
++     */
+     fun loadNextPage() {
+         val current = mutableUiState.value
+         val cursor = nextCursor ?: return
+@@ -52,6 +105,18 @@
+         loadPage(cursor = cursor, replace = false, generation = generation)
+     }
+ 
++    /**
++     * 表示中の取得失敗に応じて再試行する。
++     *
++     * ```kotlin
++     * viewModel.retry()
++     * val state = viewModel.uiState.value
++     * ```
++     *
++     * - 初回失敗（[CatalogUiState.initialError]）・更新失敗（[CatalogUiState.refreshError]）は[refresh]で再試行する
++     * - 追加取得失敗（[CatalogUiState.loadMoreError]）は[loadNextPage]で再試行する
++     * - 取得中（[CatalogUiState.isLoading]）またはエラーがなければ何もしない
++     */
+     fun retry() {
+         val current = mutableUiState.value
+         if (current.isLoading) return
+@@ -97,6 +162,16 @@
+     }
+ 
+     companion object {
++        /**
++         * 1ページの取得件数の上限を定める。
++         *
++         * ```kotlin
++         * val useCase = LoadCatalogPage(repository)
++         * val page = useCase(limit = CatalogViewModel.PAGE_SIZE)
++         * ```
++         *
++         * - 初回取得・[CatalogViewModel.refresh]による更新・[CatalogViewModel.loadNextPage]による追加取得に共通で、1ページの上限を50件とする
++         */
+         const val PAGE_SIZE = 50
+     }
+ }

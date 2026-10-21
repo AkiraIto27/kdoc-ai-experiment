@@ -1,0 +1,26 @@
+# Local configuration and credentials
+local.properties
+.env
+.env.*
+!.env.example
+key.properties
+keystore.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+
+# Gradle and generated output
+.gradle/
+.kotlin/
+**/build/
+.externalNativeBuild/
+.cxx/
+captures/
+*.hprof
+
+# IDE and operating system files
+.idea/
+*.iml
+.DS_Store

@@ -1,0 +1,45 @@
+{
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "xhigh",
+  "CLI_version": "codex-cli 0.162.0-alpha.2",
+  "timing_concurrency": 1,
+  "conditions": 6,
+  "selected_trials_per_condition": 100,
+  "selected_trials_total": 600,
+  "historical_selected_trials_preserved": 100,
+  "new_selected_trials": 500,
+  "new_actual_attempts": 502,
+  "preserved_capacity_failures": 2,
+  "attempt_scope": "602 = historical selected100 + all502 new attempts; historical excluded attempts and KDoc generation are outside this scope.",
+  "initial_state": "Every attempt starts from a fresh frozen condition copy and a new ephemeral conversation.",
+  "task_prompt_sha256": "47ce6c9c607b13654326b7ddf6317f53dd0523dc31ed57d64a490e883354dd06",
+  "recorder_source_sha256": "ea18016b927b7ce965429b3284af538e7ba4ed08e737ba2f4c5d123db9451a19",
+  "token_definition": "Cumulative input_tokens + output_tokens. cached_input_tokens is included in input_tokens; reasoning output is included in output_tokens.",
+  "time_definition": "Monotonic CLI launch-to-process-exit seconds, including model tools/native retries; excludes independent grading and KDoc generation.",
+  "quality": "Separate thread/context compiles each submission and applies the existing fixed 11 checks using a test Repository. No external product HTTP API.",
+  "retry_policy": "Capacity errors only, preserved failed attempt and missing usage, same CLI/model/effort, fresh copy/conversation, recorded backoff. No replacement based on quality or speed.",
+  "CLI_distribution": {
+    "official_release": "https://github.com/openai/codex/releases/tag/rust-v0.162.0-alpha.2",
+    "archive": "codex-package-aarch64-apple-darwin.tar.gz",
+    "archive_sha256": "72c14caf0ee818838b4d42a65591ee9e4add79a28d5991e2fb5fa7715e06c544",
+    "native_sha256": "f98d87ccc32e6a70416dfd4c2b3f249a36a319a1199e0c9a97076f1a14c02a81",
+    "restoration": "Official version installed only inside this experiment workspace; existing CLI unchanged. Historical native binary hash unavailable, so historical binary identity is not established."
+  },
+  "ledger_numeric_representation": {
+    "strict_decimal_mismatches": 119,
+    "maximum_absolute_seconds_difference": "2E-14",
+    "classification": "All500 ledger seconds equal the original Python float elapsed_ms / 1000. Preserve ledger and strict mismatch finding; final artifacts use Decimal(str(metadata.elapsed_ms))/1000."
+  },
+  "caveats": [
+    "Historical100 and additional500 were measured at different times.",
+    "Server load, cache state and connection notifications may affect latency; recorded durations are retained without adjustment or exclusion.",
+    "Descriptive comparisons only; no causal or statistical significance claims."
+  ],
+  "private_material_excluded": [
+    "raw stdout/stderr",
+    "credentials",
+    "personal absolute paths",
+    "private grading source",
+    "local runtime binaries and helper JARs"
+  ]
+}

@@ -16,9 +16,11 @@ import kotlinx.coroutines.CancellationException
 /**
  * 注入HTTPクライアントで商品ページを取得し、JSONをドメインモデルへ変換する。
  *
- * @param client 取得用クライアント。生成・終了は呼び出し側が管理する。
- *
  * 背景: 比較の再現性と外部依存の少なさを優先し、共通アプリでは固定JSONを返すKtor MockEngineを注入する。JSON解析・変換まで通し、ソケット・TLS・DNSは評価対象外とする。
+ * Why: 再現性を保ちながら、完成済みListを返すフェイクでは省かれるJSON解析・モデル変換も実行するため。
+ * How: Repository自身はHTTPエンジンを選ばず、Factoryが生成したクライアントを受け取る。モックの応答も本文バイト列の取得、UTF-8の検証、JSON解析、ドメイン変換の順に処理する。
+ *
+ * @param client 取得用クライアント。生成・終了は呼び出し側が管理する。
  */
 class HttpProductRepository(private val client: HttpClient) : ProductRepository {
     /**

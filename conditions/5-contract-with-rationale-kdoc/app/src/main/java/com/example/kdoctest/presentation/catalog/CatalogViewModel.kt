@@ -16,9 +16,11 @@ import kotlinx.coroutines.launch
  * 生成時に[refresh]で先頭取得を開始する。世代違いの成功・失敗は反映しない。
  * 取得キャンセルはエラー表示へ変換せず再送出する。
  *
- * @param useCase 全取得に[PAGE_SIZE]を指定するページ取得処理。
- *
  * 背景: 固定500件の共通基盤では、状態・失敗・再試行を直接確認できるよう、StateFlowと明示的な追加読み込みを採用する。
+ * Why: 固定500件の比較では、自動ページングの仕組みを増やさず、読み込み状態や失敗からの再試行を直接検証できる構成にするため。
+ * How: 読み取り専用のStateFlowを公開し、追加取得は[loadNextPage]から開始する。取得Jobのキャンセルと要求世代の照合を組み合わせ、更新前の結果が新しい状態へ反映されるのを防ぐ。
+ *
+ * @param useCase 全取得に[PAGE_SIZE]を指定するページ取得処理。
  */
 class CatalogViewModel(private val useCase: LoadCatalogPage) : ViewModel() {
     private val mutableUiState = MutableStateFlow(CatalogUiState())

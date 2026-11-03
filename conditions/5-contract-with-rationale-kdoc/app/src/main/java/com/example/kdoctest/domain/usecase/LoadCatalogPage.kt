@@ -6,9 +6,11 @@ import com.example.kdoctest.domain.repository.ProductRepository
 /**
  * 件数上限を検証後、商品ページ取得をリポジトリへ委譲する。
  *
- * @param repository カーソル解釈と商品ページ取得の実装。
- *
  * 背景: domain層はdata・presentation層を参照しない構成で、具象の取得実装をRepository境界の外側に置く。
+ * Why: 取得条件を検証するドメインの処理を、HTTPやJSONを扱う具体的な取得方法から分離するため。
+ * How: 件数上限を検証し、カーソルと件数を[ProductRepository]へ渡す。HTTP実装やDTOを直接参照せず、取得結果をそのまま返す。
+ *
+ * @param repository カーソル解釈と商品ページ取得の実装。
  */
 class LoadCatalogPage(private val repository: ProductRepository) {
     /**

@@ -18,6 +18,11 @@ import kotlinx.coroutines.launch
  * 要求世代が一致しない成功結果や失敗は状態へ反映しない。
  * 取得コルーチンのキャンセルはエラー表示へ変換せず再送出する。
  *
+ * 取得結果は戻り値ではなく[uiState]へ反映する。各操作は取得完了を待機するAPIではない。
+ * 更新では進行中のJobをキャンセルし、新しい要求世代を割り当てる。
+ * キャンセルに反応しない古い処理が後から完了しても、要求世代の照合で状態への反映を防ぐ。
+ * キャンセルだけを理由に失敗メッセージは設定しない。
+ *
  * @param useCase 各ページを取得する処理。すべての取得に[PAGE_SIZE]を指定する。
  */
 class CatalogViewModel(private val useCase: LoadCatalogPage) : ViewModel() {
@@ -25,6 +30,10 @@ class CatalogViewModel(private val useCase: LoadCatalogPage) : ViewModel() {
     /**
      * 一覧画面が監視する読み取り専用の状態。各エラー値のnullは、その種別の表示対象エラーがないことを表す。
      * 成功時の`hasMore`は、次カーソルがあり、表示件数が取得した全件数より少ない場合にtrueになる。
+     *
+     * 成功時は読み込み中の各フラグをfalse、各エラーをnullにする。
+     * 商品が空でも正常なページなら成功状態となる。次カーソルがあっても、
+     * 表示件数が全件数に達していれば`hasMore`はfalseとなる。
      */
     val uiState: StateFlow<CatalogUiState> = mutableUiState.asStateFlow()
 
@@ -42,6 +51,11 @@ class CatalogViewModel(private val useCase: LoadCatalogPage) : ViewModel() {
      * 取得中は既存商品を保持し、商品がなければ初回読み込み、あれば更新中として表示する。
      * 成功時は一覧を置き換える。失敗時は商品とページ情報を保持し、商品がなければ`initialError`、
      * あれば`refreshError`へメッセージを設定する。
+     *
+     * 取得中でも呼び出せる。以前の取得をキャンセルして先頭ページから取り直し、
+     * 開始時に初回・更新・追加取得のエラーをすべて消し、追加取得中の表示も解除する。
+     * 成功時は既存一覧への追記を行わず、商品一覧と次カーソル・全件数を取得結果で置き換える。
+     * 取得処理はviewModelScopeのコルーチンで起動し、結果や失敗は[uiState]から観測する。
      */
     fun refresh() {
         val generation = ++requestGeneration
@@ -63,6 +77,11 @@ class CatalogViewModel(private val useCase: LoadCatalogPage) : ViewModel() {
      *
      * 次カーソルがない場合、いずれかの取得中、または`hasMore`がfalseの場合は何も行わない。
      * 開始時に更新・追加取得のエラーを消し、失敗時は商品とページ情報を保持して`loadMoreError`を設定する。
+     *
+     * 何もしない場合は新しい取得を起動せず、状態とエラー表示も変更しない。
+     * 取得する場合は現在の次カーソルを使用する。成功したページの商品はその順序のまま追記し、
+     * 既存項目との重複排除はしない。次カーソルと全件数は取得結果で更新する。
+     * 失敗しても次カーソルを進めないため、再試行は同じページを対象とする。
      */
     fun loadNextPage() {
         val current = mutableUiState.value
@@ -81,6 +100,10 @@ class CatalogViewModel(private val useCase: LoadCatalogPage) : ViewModel() {
     /**
      * 表示中の失敗に応じ、初回・更新の失敗なら[refresh]、追加取得の失敗なら[loadNextPage]を呼ぶ。
      * 取得中またはエラーがない場合は何も行わない。
+     *
+     * 初回・更新の失敗と追加取得の失敗が併存する場合は、先頭ページの再取得を優先する。
+     * 取得中ならエラーがあっても再試行を開始せず、状態を変更しない。
+     * このメソッド自身でページを取得せず、選んだ操作の状態遷移とエラー処理に従う。
      */
     fun retry() {
         val current = mutableUiState.value

@@ -6,6 +6,8 @@ import com.example.kdoctest.domain.model.ProductPage
  * 商品一覧をカーソルでページ取得する契約。次の取得には[ProductPage.nextCursor]を使う。
  *
  * 背景: 単一appのdata・domain・presentationをパッケージで分離し、Repositoryを取得実装との境界に置く。
+ * Why: 小規模な共通基盤では既存の単一app構成を保ちつつ、データ取得と利用側の責務を追いやすくするため。
+ * How: domainに取得インターフェース、dataにその実装を置き、Factoryで接続する。パッケージでの分離であり、Gradleモジュールの境界で層への依存を強制する構成ではない。
  */
 interface ProductRepository {
     /**

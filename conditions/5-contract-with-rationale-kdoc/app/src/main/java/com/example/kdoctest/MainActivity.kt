@@ -17,6 +17,8 @@ import com.example.kdoctest.ui.theme.KDocTestTheme
  * 未指定・未知の値・デバッグ以外は通常シナリオ。
  *
  * 背景: 架空の業務用備品カタログで、在庫不明と欠品を分け、販売単位ごとの価格を表示する。
+ * Why: 通常・空・失敗を同じ一覧画面で再現し、KDoc以外の実行条件を揃えて比較するため。
+ * How: デバッグ用Intentの値を固定シナリオへ変換してFactoryへ渡し、共通のViewModelと画面構成で表示する。
  */
 class MainActivity : ComponentActivity() {
     private val catalogViewModel: CatalogViewModel by viewModels {

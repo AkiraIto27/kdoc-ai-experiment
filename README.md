@@ -43,8 +43,6 @@ clean/rm等の削除操作、既存ファイルやディレクトリの削除・
 通常APIの確認が必要な場合は .tools/run-api-test を使用できます。既存のLoadCatalogPageTest 1クラスだけを、既存Kotlin compilerとJUnitで実行します。Gradle全体・Androidビルドの確認は今回の範囲に含めません。このコマンドがbuild/内に新しい出力を作ることは許可します。過去出力は削除せず、ソース・通常テスト・.toolsの内容は変更しないでください。
 ```
 
-原文のSHA-256は `47ce6c9c607b13654326b7ddf6317f53dd0523dc31ed57d64a490e883354dd06` で、[実行プロトコル](publication/condition6-600/execution-protocol.json)の `task_prompt_sha256` と一致します。
-
 ## 補助ファイルとHTTP実装の役割
 
 | 場所 | 用途 |
@@ -54,25 +52,6 @@ clean/rm等の削除操作、既存ファイルやディレクトリの削除・
 | [implementation-verification.json](variants/http-pages/implementation-verification.json) | 過去のJVMコンパイル、独立HTTP受入、公開・live取得確認の記録。作成時の旧パスとhashを保存しています。 |
 | [data/pages](variants/http-pages/src/main/kotlin/com/example/kdoctest/data/pages/) | HTTP版の実装本体。`CatalogHttpTransport.kt`がGETと取消を扱い、`PagesProductRepository.kt`がPagesデータの取得・hash・ページ契約を検証します。 |
 | [docs/data/catalog-v1](docs/data/catalog-v1/) | 公開配信用JSON・limit別ページ・索引。実測版の通信先ではありません。 |
-
-## Pages配信候補
-
-公開先は[AkiraIto27/kdoc-ai-experiment](https://github.com/AkiraIto27/kdoc-ai-experiment)、Pagesは[https://akiraito27.github.io/kdoc-ai-experiment/](https://akiraito27.github.io/kdoc-ai-experiment/)です。mainブランチの`/docs`を配信元とし、deploy完了を確認しました。初回公開commitは`a5d562ac59ddac2b6d4e3207cf877d472cbfec40`です。
-
-ページ化済みJSONの相対URL:
-
-- `data/catalog-v1/manifest.json`: 版hash・件数・limit索引。
-- `data/catalog-v1/products.json`: 実測fixtureと同じbyte列の全500件。単一ページとしてページ変換器へ渡さないでください。
-- `data/catalog-v1/limits/50/first.json`: 既定50件の先頭ページ。
-- `data/catalog-v1/limits/1/first.json` / `limits/100/first.json`: 境界値の先頭ページ。
-- `data/catalog-v1/limits/<limit>/<nextCursor>.json`: 同じlimitで次ページを取得。
-- `data/catalog-v1/empty.json`: 空一覧の正常レスポンス。
-
-生成は新しい配信用ファイルだけを対象にします。Python標準ライブラリのみで、リポジトリルートから`python3 -B scripts/build_pages_data.py`を実行します。`1-no-kdoc`と`4-detailed-contract-kdoc`のアセットは読み取り専用で使用します。既存の生成ファイルが異なる場合は上書きせず停止します。
-
-Pagesは静的配信なので、URLクエリからページを作ったり、条件に応じて400/503を返したりするAPIは提供できません。limit/cursorの解決と入力拒否を[HTTPアダプター](variants/http-pages/README.md)に実装しています。[公開API](variants/http-pages/API.md)にエラー・cancel・返却値を記載しています。HTTP通信を導入した版の挙動や計測値を、保存したA/Eの実測結果へ混ぜないでください。
-
-HTTP版の実装・公開時には、依存追加、Gradleテスト、Androidビルド、新たなLLM試行は行っていません。既存JARを使うJVMコンパイル、別thread/contextでのHTTP受入8/8・静的2640ページ・初回公開対象の独立確認が成功しています。公開後はmanifest・既定50件ページ・全500件JSONのHTTP 200とbyte/hash一致、およびHTTPアダプターによる既定50件取得を確認しました。実装時の確認範囲は[HTTP実装記録](variants/http-pages/implementation-verification.json)、当時の公開状態は[状態記録](publication/publication-state.json)、初回公開対象のhashは[初回manifest](publication/final-publication-manifest.json)に記載しています。これらは今回の改名作業で再実行した結果ではありません。
 
 ## JavadocとKDocのタグ比較
 

@@ -23,6 +23,28 @@ Kotlin Fest発表「そのKDoc、Javadocのままになっていませんか？�
 
 一時的なインフラエラーは再試行し、成功した試行を集計。過去と今回の計測時期・サーバー負荷・キャッシュの差があるため、平均の差から因果や有意差は主張しません。
 
+## 実験でAIに渡したプロンプト
+
+6条件の実装試行でAIに渡した共通プロンプトを、原文のまま掲載します。⑥のKDoc生成用プロンプトや独立採点用プロンプトとは別です。
+
+```text
+KDocがあれば、KDocの内容を確認してから実装してください。
+
+既存のLoadCatalogPageを使い、初回ページを取得する関数を実装してください。希望件数が未指定ならAPIの既定動作、指定されていればAPIの入力契約に従ってください。取得したページと発生した例外は変更せず呼出し元へ渡してください。ページサイズを丸めたり、独自に再試行したりしないでください。既存API・通常テストは変更しないでください。
+
+提出ファイルは app/src/main/java/com/example/kdoctest/experiment/LoadFirstPage.kt だけです。packageは com.example.kdoctest.experiment とし、必要なimportを追加してください。次の宣言を変更せずに実装してください。
+
+suspend fun loadFirstPage(loadPage: LoadCatalogPage, requestedLimit: Int?): ProductPage
+
+提出ファイル以外の既存ファイルを変更しないでください。commit/pushは行わないでください。
+
+clean/rm等の削除操作、既存ファイルやディレクトリの削除・移動・上書きは禁止します。指定の提出ファイルは新規作成し、そのファイルだけ必要に応じて修正してください。依存のインストールや購入、認証設定の変更は行わないでください。
+
+通常APIの確認が必要な場合は .tools/run-api-test を使用できます。既存のLoadCatalogPageTest 1クラスだけを、既存Kotlin compilerとJUnitで実行します。Gradle全体・Androidビルドの確認は今回の範囲に含めません。このコマンドがbuild/内に新しい出力を作ることは許可します。過去出力は削除せず、ソース・通常テスト・.toolsの内容は変更しないでください。
+```
+
+原文のSHA-256は `47ce6c9c607b13654326b7ddf6317f53dd0523dc31ed57d64a490e883354dd06` で、[実行プロトコル](publication/condition6-600/execution-protocol.json)の `task_prompt_sha256` と一致します。
+
 ## 補助ファイルとHTTP実装の役割
 
 | 場所 | 用途 |
